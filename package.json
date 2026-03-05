@@ -1,0 +1,13 @@
+{
+  "name": "@nx-poc/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/js": "19.7.5",
+    "@nx/workspace": "19.7.5",
+    "nx": "19.7.5"
+  }
+}
