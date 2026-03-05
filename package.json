@@ -4,10 +4,15 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@angular-devkit/core": "~18.2.0",
+    "@nx/angular": "^19.7.5",
     "@nx/js": "19.7.5",
+    "@nx/web": "19.7.5",
+    "@nx/webpack": "^19.7.5",
     "@nx/workspace": "19.7.5",
-    "nx": "19.7.5"
-  }
+    "nx": "19.7.5",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {}
 }
