@@ -1,0 +1,110 @@
+@use "@angular/material" as mat;
+@use "m3-theme" as m3-theme;
+
+// UMN branding colors
+$maroon: #7a0019;
+$darkMaroon: #5b0013;
+$lightMaroon: #900021;
+$gold: #ffcc33;
+$lightGold: #ffde7a;
+$darkGold: #ffb71e;
+$darkerGrey: #333333;
+$darkGrey: #5a5a5a;
+$mediumGrey: #777677;
+$lightGrey: #d5d6d2;
+$lighterGrey: #f0efee;
+$offWhite: #f9f7f6;
+
+// TODO: consider overriding some of the color vars in _nde-variables.scss
+// (e.g. --lightBG)
+
+.custom-nde-theme {
+  @include mat.all-component-colors(m3-theme.$light-theme);
+  @include mat.system-level-colors(m3-theme.$light-theme);
+
+  // override color tokens (can't use mat.theme-overrides mixin with v18)
+  --sys-primary: #{$maroon};
+  --sys-on-primary: #ffffff;
+  --sys-primary-container: #{$lightGold};
+  --sys-on-primary-container: #{$maroon};
+
+  --sys-secondary: #{$darkerGrey};
+  --sys-on-secondary: #ffffff;
+  --sys-secondary-container: #{$lightGold};
+  --sys-on-secondary-container: #{$maroon};
+
+  --sys-tertiary: #{$darkGold};
+  --sys-on-tertiary: #{$darkerGrey};
+  --sys-tertiary-container: #{$offWhite};
+  --sys-on-tertiary-container: #{$darkerGrey};
+
+  // surface hierarchy
+  --sys-on-background: #{$darkerGrey};
+  --sys-on-surface: #{$darkerGrey};
+  --sys-background: #ffffff;
+  --sys-surface: #ffffff;
+  --sys-surface-tint: transparent;
+  --sys-surface-bright: #ffffff;
+  --sys-surface-dim: #{$lighterGrey};
+  --sys-surface-container-lowest: #ffffff;
+  --sys-surface-container-low: #{$offWhite};
+  --sys-surface-container: #{$lighterGrey};
+  --sys-surface-container-high: #{$lighterGrey};
+  --sys-surface-container-highest: #{$lightGrey};
+
+  --sys-primary-fixed: #{$maroon};
+  --sys-primary-fixed-dim: #{$lightMaroon};
+  --sys-on-primary-fixed: #ffffff;
+  --sys-on-primary-fixed-variant: #ffffff;
+
+  --sys-secondary-fixed: #{$gold};
+  --sys-secondary-fixed-dim: #{$darkGold};
+  --sys-on-secondary-fixed: #{$darkerGrey};
+  --sys-on-secondary-fixed-variant: #{$darkerGrey};
+
+  --sys-tertiary-fixed: #{$gold};
+  --sys-tertiary-fixed-dim: #{$darkGold};
+  --sys-on-tertiary-fixed: #{$darkerGrey};
+  --sys-on-tertiary-fixed-variant: #{$darkerGrey};
+  //--sys-on-tertiary-fixed-variant: #{$darkMaroon};
+
+  --sys-inverse-surface: #{$darkerGrey};
+  --sys-inverse-on-surface: #{$offWhite};
+  --sys-inverse-primary: #{$lightGold};
+
+  --sys-outline: #{$mediumGrey};
+  --sys-outline-variant: #{$lightGrey};
+  --sys-surface-variant: #{$lighterGrey};
+  --sys-on-surface-variant: #{$darkGrey};
+  //  --sys-error: #{$darkMaroon};
+  //  --sys-on-error: #ffffff;
+  //  --sys-scrim: #000000;
+  //  --sys-shadow: #000000;
+
+  // Button Ripples ///////////////////////////////////////////////////////////
+  // This should set the ripple color for primary buttons,
+  // but it doesn't seem to work...
+  //--mat-sys-hover-state-layer-color: #{$darkerGrey};
+  //--mat-sys-focus-state-layer-color: #{$darkerGrey};
+  //--mat-sys-pressed-state-layer-color: #{$darkerGrey};
+
+  // This does work, but we'd need to account for lots of specific button types
+  //--mat-outlined-button-state-layer-color: #{$darkerGrey};
+  //--mat-...-state-layer-color: ...
+
+  // Workaround to force neutral ripple color on buttons
+  // This will probably need to be updated if we move to a new version of MD
+  --mat-ripple-color: rgba(51, 51, 51, 0.1);
+  @include mat.button-overrides(
+    (
+      ripple-color: var(--mat-ripple-color),
+      state-layer-color: #{$darkerGrey},
+    )
+  );
+  @include mat.fab-overrides(
+    (
+      ripple-color: var(--mat-ripple-color),
+      state-layer-color: #{$darkerGrey},
+    )
+  );
+}

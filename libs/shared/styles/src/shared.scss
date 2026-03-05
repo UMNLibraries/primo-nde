@@ -1,0 +1,89 @@
+@use 'customized-theme' as theme;
+
+.custom-search-bar-container .background-overlay {
+  background-color: theme.$darkMaroon !important;
+}
+
+.signed-in-user-details {
+  background-color: theme.$lightGold !important;
+}
+
+.webOfScience-badge,
+.scopus-badge {
+  // these use --sys-primary-container backgrounds by default,
+  // which really sticks out
+  background-color: inherit !important;
+  svg path {
+    fill: var(--sys-primary) !important;
+  }
+}
+
+// override the 'dancing dots' loading indicator color
+nde-progress-spinner-dialog svg path {
+  filter: grayscale(1) !important;
+}
+
+// override hard-coded svg fill colors in Rapido offer icons
+nde-ngrs-offer-drawer svg path {
+  &:first-of-type {
+    fill: theme.$lightGrey !important;
+  }
+  fill: theme.$maroon !important;
+}
+
+// fix hard-coded svg fill color in quicklinks menu icons
+button.quicklink-menu-item svg path {
+  fill: var(--sys-primary) !important;
+}
+
+// don't show the user group or exp date in the account page
+.user-Expiration-date-and-patron-group {
+  display: none;
+}
+
+// don't show the reference number in CSL citations
+.csl-entry .csl-left-margin {
+  display: none;
+}
+
+// hide unused request form fields
+nde-request-form {
+  [data-qa="almaRequest.termsOfUse"] {
+    display: none;
+  }
+  [data-qa="nui.datePicker.pickupDate"] {
+    display: none;
+  }
+}
+
+// fix word-break in collection discovery cards
+.collection-grid-card .grid-collection-properties .collection-title {
+  word-break: break-word !important;
+}
+
+// make room for custom ILLiad tiles in account overview
+nde-requests-overview,
+nde-loans-overview {
+  > mat-card {
+    height: auto !important;
+    margin-bottom: 16px;
+  }
+}
+
+// accommodate custom ILLiad tiles in account overview page (TC ONLY)
+.overview-cards .account-card-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  mat-card {
+    flex: 1;
+  }
+
+  & > * {
+    display: contents;
+  }
+
+  .no-items-to-display {
+    min-height: 85px;
+  }
+}

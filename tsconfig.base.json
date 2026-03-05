@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-poc/shell": ["libs/shared/shell/src/index.ts"]
+      "@nx-poc/shell": ["libs/shared/shell/src/index.ts"],
+      "@nx-poc/styles": ["libs/shared/styles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
