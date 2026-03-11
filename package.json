@@ -4,6 +4,9 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
+  "workspaces": [
+    "libs/vendor/custom-module"
+  ],
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~2.1.2",
     "@analogjs/vitest-angular": "~2.1.2",
