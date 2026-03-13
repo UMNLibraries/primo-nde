@@ -7,9 +7,12 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "customWebpackConfig": {
+          "path": "views/01UMN_INST-T/webpack.config.js"
+        },
         "outputPath": "dist/views/01UMN_INST-T",
         "index": "views/01UMN_INST-T/src/index.html",
         "main": "views/01UMN_INST-T/src/main.ts",
