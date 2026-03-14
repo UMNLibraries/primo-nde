@@ -1,2 +1,6 @@
+# Even when libs are non-buildable, nx with try to infer build tasks based on the
+# existence of some files. Telling nx to ignore them will prevent that behavior.
+
 libs/vendor/custom-module/package.json
 libs/vendor/custom-module/webpack.config.js
+libs/**/webpack.config.js
