@@ -44,7 +44,13 @@
             "input": "{projectRoot}/public"
           }
         ],
-        "styles": ["{projectRoot}/src/styles.scss"],
+        "styles": [
+          {
+            "input": "{projectRoot}/src/styles.scss",
+            "bundleName": "custom",
+            "inject": false
+          }
+        ],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/shared/styles/src"]
         },
