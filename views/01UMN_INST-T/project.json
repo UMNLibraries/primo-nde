@@ -7,74 +7,13 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
       "options": {
         "customWebpackConfig": {
-          "path": "views/01UMN_INST-T/webpack.config.js"
-        },
-        "outputPath": "dist/views/01UMN_INST-T",
-        "index": "views/01UMN_INST-T/src/index.html",
-        "main": "views/01UMN_INST-T/src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "views/01UMN_INST-T/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "views/01UMN_INST-T/public"
-          }
-        ],
-        "styles": ["views/01UMN_INST-T/src/styles.scss"],
-        "stylePreprocessorOptions": {
-          "includePaths": ["libs/shared/styles/src"]
-        },
-        "scripts": []
-      },
-      "configurations": {
-        "production": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
-            }
-          ],
-          "outputHashing": "all"
-        },
-        "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
-          "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "path": "libs/shared/base-view/webpack.config.js"
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
-    "serve": {
-      "executor": "@nx/angular:dev-server",
-      "options": {
-        "port": 4201,
-        "proxyConfig": "libs/vendor/custom-module/proxy/proxy.conf.mjs"
-      },
-      "configurations": {
-        "production": {
-          "buildTarget": "twincities:build:production"
-        },
-        "development": {
-          "buildTarget": "twincities:build:development"
-        }
-      },
-      "defaultConfiguration": "development",
-      "continuous": true
-    },
+    "serve": {},
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
