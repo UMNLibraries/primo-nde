@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-poc/styles": ["libs/shared/styles/src/index.ts"],
       "@vendor/custom-module": ["libs/vendor/custom-module/index.ts"],
       "@nx-poc/base-view": ["libs/shared/base-view/src/index.ts"]
     }
