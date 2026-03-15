@@ -12,6 +12,7 @@
     "sharedGlobals": []
   },
   "plugins": [
+    "./tools/plugins/primo-view.plugin.ts",
     {
       "plugin": "@nx/webpack/plugin",
       "options": {
@@ -38,12 +39,6 @@
         "polyfills": ["zone.js"],
         "tsConfig": "{projectRoot}/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "{projectRoot}/public"
-          }
-        ],
         "styles": [
           {
             "input": "{projectRoot}/src/styles.scss",

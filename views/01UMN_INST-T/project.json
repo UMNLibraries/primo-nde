@@ -6,13 +6,6 @@
   "sourceRoot": "views/01UMN_INST-T/src",
   "tags": [],
   "targets": {
-    "build": {
-      "options": {
-        "customWebpackConfig": {
-          "path": "libs/shared/base-view/webpack.config.js"
-        }
-      }
-    },
     "serve": {},
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
