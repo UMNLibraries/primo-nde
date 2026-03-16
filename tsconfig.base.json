@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@vendor/custom-module": ["libs/vendor/custom-module/index.ts"],
-      "@umn-nde/base-view": ["libs/shared/base-view/src/index.ts"]
+      "@umn-nde/base-view": ["libs/base-view/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

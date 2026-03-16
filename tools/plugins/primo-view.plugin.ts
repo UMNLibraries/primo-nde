@@ -22,7 +22,7 @@ export const createNodes: CreateNodesV2 = [
                       // views inherit assets from the base-view
                       {
                         glob: '**/*',
-                        input: 'libs/shared/base-view/src/assets',
+                        input: 'libs/base-view/src/assets',
                         output: 'assets',
                       },
                       {

@@ -47,7 +47,7 @@
           }
         ],
         "stylePreprocessorOptions": {
-          "includePaths": ["libs/shared/base-view/src/styles"]
+          "includePaths": ["libs/base-view/src/styles"]
         },
         "scripts": []
       },

@@ -48,10 +48,10 @@ button.quicklink-menu-item svg path {
 
 // hide unused request form fields
 nde-request-form {
-  [data-qa="almaRequest.termsOfUse"] {
+  [data-qa='almaRequest.termsOfUse'] {
     display: none;
   }
-  [data-qa="nui.datePicker.pickupDate"] {
+  [data-qa='nui.datePicker.pickupDate'] {
     display: none;
   }
 }
