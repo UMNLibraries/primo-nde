@@ -41,6 +41,7 @@
     "@typescript-eslint/utils": "^7.16.0",
     "@vitest/coverage-v8": "^4.0.0",
     "@vitest/ui": "^4.0.0",
+    "archiver": "^7.0.1",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "10.1.8",
     "jsdom": "~22.1.0",
