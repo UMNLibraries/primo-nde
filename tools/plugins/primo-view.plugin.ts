@@ -2,7 +2,7 @@ import { CreateNodesV2, createNodesFromFiles } from '@nx/devkit';
 import { dirname } from 'path';
 
 export const createNodes: CreateNodesV2 = [
-  'views/*/project.json',
+  'apps/views/*/project.json',
   async (configFiles, options, context) => {
     return await createNodesFromFiles(
       (projectConfigFile) => {

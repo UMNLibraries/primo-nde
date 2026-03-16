@@ -1,16 +1,16 @@
 {
-  "name": "twincities",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "twincities-view",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "views/01UMN_INST-T/src",
+  "sourceRoot": "apps/views/01UMN_INST-T/src",
   "tags": [],
   "targets": {
     "serve": {},
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "twincities:build"
+        "buildTarget": "twincities-view:build"
       }
     },
     "lint": {
@@ -19,7 +19,7 @@
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "twincities:build",
+        "buildTarget": "twincities-view:build",
         "spa": true
       }
     }

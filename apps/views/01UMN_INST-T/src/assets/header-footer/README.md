@@ -24,7 +24,7 @@ src/assets/header-footer/
 2. Insert HTML into your app layout dynamically:
 
 ```ts
-this.htmlLoaderService.loadHtml(`assets/header-footer/header_${lang}.html`).subscribe(html => {
+this.htmlLoaderService.loadHtml(`assets/header-footer/header_${lang}.html`).subscribe((html) => {
   this.headerHtml = html;
 });
 ```
@@ -56,10 +56,7 @@ ng generate component footer
 
 These components must implement the desired UI for header and footer.
 
-
 ### 🛠 Step 2: Load Remote Components in Shell App
-
-
 
 The `selectorComponentMap` in `customComponentMappings.ts` must include:
 
@@ -76,17 +73,14 @@ Your components should accept `@Input() lang: string` and adjust content accordi
 
 ---
 
-
-
-
 ## ✅ Summary
 
-| Feature           | Static HTML | Remote Component |
-|------------------|-------------|------------------|
-| Custom per language | ✅ Yes | ✅ Yes |
-| Dynamic theming     | ❌ No  | ✅ Yes |
-| Shared across views | ❌ No  | ✅ Yes |
-| Easily override     | ✅ Yes | ✅ Yes |
+| Feature             | Static HTML | Remote Component |
+| ------------------- | ----------- | ---------------- |
+| Custom per language | ✅ Yes      | ✅ Yes           |
+| Dynamic theming     | ❌ No       | ✅ Yes           |
+| Shared across views | ❌ No       | ✅ Yes           |
+| Easily override     | ✅ Yes      | ✅ Yes           |
 
 ---
 
@@ -101,4 +95,3 @@ npm run build
 Output is zipped and can be uploaded via Alma > Discovery > View List > Edit > Customization Package.
 
 For more info, refer to the main `README.md`.
-
