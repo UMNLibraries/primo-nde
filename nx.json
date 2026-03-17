@@ -123,10 +123,15 @@
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "vitest"
+      "unitTestRunner": "vitest",
+      "skipModule": true,
+      "flat": true,
+      "skipTests": true,
+      "style": "none"
     },
     "@nx/angular:component": {
-      "style": "css"
+      "style": "scss",
+      "skipSelector": true
     }
   }
 }
