@@ -1,0 +1,20 @@
+{
+  "name": "collection-discovery",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/collection-discovery/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["type:domain"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/collection-discovery"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
