@@ -4,6 +4,7 @@ const {
 } = require('@angular-architects/module-federation/webpack');
 const path = require('path');
 const { merge } = require('webpack-merge');
+const webpack = require('webpack');
 
 module.exports = (config, context) => {
   // can set/override custom config here (context is the nx ExecutorContext)
@@ -29,6 +30,14 @@ module.exports = (config, context) => {
       rxjs: { requiredVersion: 'auto' },
     }),
   });
+
+  // replace vendor component mappings with local mappings module
+  config.plugins.push(
+    new webpack.NormalModuleReplacementPlugin(
+      /custom1-module\/customComponentMappings/,
+      `${projectRoot}/src/component-mappings.ts`
+    )
+  );
 
   return merge(config, mfConfig);
 };
