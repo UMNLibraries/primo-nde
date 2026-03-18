@@ -50,7 +50,7 @@ function collectionFilterFor(view: UmnViewCode) {
 @Component({
   template: '',
 })
-export class FilteredCollectionDiscoveryContainerComponent {
+export class FilterCampusCollectionsComponent {
   private store = inject(Store);
 
   constructor() {
