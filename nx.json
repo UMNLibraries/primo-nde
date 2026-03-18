@@ -127,7 +127,8 @@
       "skipModule": true,
       "flat": true,
       "skipTests": true,
-      "style": "none"
+      "style": "none",
+      "inlineTemplate": true
     },
     "@nx/angular:component": {
       "style": "scss",
