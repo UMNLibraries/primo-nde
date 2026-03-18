@@ -16,17 +16,23 @@ describe('FilteredCollectionDiscoveryContainer', () => {
     const vidSignal = () => ctx.vid;
     const collectionsSignal = () => allCollections;
     const mockStore = {
-      selectSignal: jasmine.createSpy(),
-      dispatch: jasmine.createSpy(),
+      selectSignal: vi.fn(),
+      dispatch: vi.fn(),
     };
-    mockStore.selectSignal.and.returnValues(vidSignal, collectionsSignal);
+
+    mockStore.selectSignal
+      .mockReturnValueOnce(vidSignal)
+      .mockReturnValueOnce(collectionsSignal);
+
     TestBed.configureTestingModule({
       providers: [{ provide: Store, useValue: mockStore }],
     });
+
     const fixture = TestBed.createComponent(
       FilteredCollectionDiscoveryContainerComponent
     );
     const component = fixture.componentInstance;
+
     return { mockStore };
   }
 
@@ -34,7 +40,7 @@ describe('FilteredCollectionDiscoveryContainer', () => {
     const { mockStore } = await setup({ vid: UmnView.CROOKSTON });
     expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
     expect(mockStore.dispatch).toHaveBeenCalledWith(
-      jasmine.objectContaining({
+      expect.objectContaining({
         type: '[Collection Discovery] Get Collections Tree Success',
         collections: allCollections.filter((c) =>
           c.library.value.startsWith('C')
@@ -47,7 +53,7 @@ describe('FilteredCollectionDiscoveryContainer', () => {
     const { mockStore } = await setup({ vid: UmnView.DULUTH });
     expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
     expect(mockStore.dispatch).toHaveBeenCalledWith(
-      jasmine.objectContaining({
+      expect.objectContaining({
         type: '[Collection Discovery] Get Collections Tree Success',
         collections: allCollections.filter((c) =>
           c.library.value.startsWith('D')
@@ -60,7 +66,7 @@ describe('FilteredCollectionDiscoveryContainer', () => {
     const { mockStore } = await setup({ vid: UmnView.MORRIS });
     expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
     expect(mockStore.dispatch).toHaveBeenCalledWith(
-      jasmine.objectContaining({
+      expect.objectContaining({
         type: '[Collection Discovery] Get Collections Tree Success',
         collections: allCollections.filter((c) =>
           c.library.value.startsWith('M')
@@ -73,7 +79,7 @@ describe('FilteredCollectionDiscoveryContainer', () => {
     const { mockStore } = await setup({ vid: 'SOME_VIEW_CODE' });
     expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
     expect(mockStore.dispatch).toHaveBeenCalledWith(
-      jasmine.objectContaining({
+      expect.objectContaining({
         type: '[Collection Discovery] Get Collections Tree Success',
         collections: allCollections.filter((c) =>
           c.library.value.startsWith('T')
