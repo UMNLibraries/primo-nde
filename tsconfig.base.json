@@ -20,7 +20,8 @@
       "@umn-nde/collection-discovery": [
         "libs/collection-discovery/src/index.ts"
       ],
-      "@umn-nde/full-display": ["libs/full-display/src/index.ts"]
+      "@umn-nde/full-display": ["libs/full-display/src/index.ts"],
+      "@umn-nde/state": ["libs/shared/state/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

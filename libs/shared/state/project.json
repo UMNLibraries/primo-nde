@@ -1,16 +1,16 @@
 {
-  "name": "full-display",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/full-display/src",
+  "name": "state",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/state/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:lib-feature"],
+  "tags": ["type:lib-shared"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../coverage/libs/full-display"
+        "reportsDirectory": "../../../coverage/libs/shared/state"
       }
     },
     "lint": {

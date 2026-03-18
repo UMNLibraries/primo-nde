@@ -4,7 +4,7 @@
   "sourceRoot": "libs/collection-discovery/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:domain"],
+  "tags": ["type:lib-feature"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",
