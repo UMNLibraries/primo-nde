@@ -1,1 +1,1 @@
-export * from './lib/base-view';
+export * from './lib/component-mappings';
