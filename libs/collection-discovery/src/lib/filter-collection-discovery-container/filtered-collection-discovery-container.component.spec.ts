@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
-import { FilteredCollectionDiscoveryContainer } from './filtered-collection-discovery-container';
-import { View } from '../view-code';
+import { FilteredCollectionDiscoveryContainerComponent } from './filtered-collection-discovery-container.component';
+import { UmnView } from '@umn-nde/shared-state/view-config';
 
 describe('FilteredCollectionDiscoveryContainer', () => {
   const allCollections = [
@@ -24,14 +24,14 @@ describe('FilteredCollectionDiscoveryContainer', () => {
       providers: [{ provide: Store, useValue: mockStore }],
     });
     const fixture = TestBed.createComponent(
-      FilteredCollectionDiscoveryContainer
+      FilteredCollectionDiscoveryContainerComponent
     );
     const component = fixture.componentInstance;
     return { mockStore };
   }
 
   it('filters and dispatches CROOKSTON collections (starts with C)', async () => {
-    const { mockStore } = await setup({ vid: View.CROOKSTON });
+    const { mockStore } = await setup({ vid: UmnView.CROOKSTON });
     expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
     expect(mockStore.dispatch).toHaveBeenCalledWith(
       jasmine.objectContaining({
@@ -44,7 +44,7 @@ describe('FilteredCollectionDiscoveryContainer', () => {
   });
 
   it('filters and dispatches DULUTH collections (starts with D)', async () => {
-    const { mockStore } = await setup({ vid: View.DULUTH });
+    const { mockStore } = await setup({ vid: UmnView.DULUTH });
     expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
     expect(mockStore.dispatch).toHaveBeenCalledWith(
       jasmine.objectContaining({
@@ -57,7 +57,7 @@ describe('FilteredCollectionDiscoveryContainer', () => {
   });
 
   it('filters and dispatches MORRIS collections (starts with M)', async () => {
-    const { mockStore } = await setup({ vid: View.MORRIS });
+    const { mockStore } = await setup({ vid: UmnView.MORRIS });
     expect(mockStore.dispatch).toHaveBeenCalledTimes(1);
     expect(mockStore.dispatch).toHaveBeenCalledWith(
       jasmine.objectContaining({

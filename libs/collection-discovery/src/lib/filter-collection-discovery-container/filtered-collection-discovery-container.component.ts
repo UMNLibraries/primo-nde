@@ -1,10 +1,11 @@
-import { Component, inject, Signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
-import { View, ViewCode } from '../view-code';
+import {
+  ViewConfig,
+  UmnView,
+  UmnViewCode,
+} from '@umn-nde/shared-state/view-config';
 
-interface ViewConfig {
-  config: { vid: string };
-}
 interface Collection {
   library: { value: string };
 }
@@ -25,15 +26,15 @@ const selectCollectionsTree = createSelector(
   (state) => state.collectionsTree
 );
 
-function collectionFilterFor(view: ViewCode) {
+function collectionFilterFor(view: UmnViewCode) {
   switch (view) {
-    case View.CROOKSTON:
+    case UmnView.CROOKSTON:
       return (collection: Collection) =>
         collection.library.value.startsWith('C');
-    case View.DULUTH:
+    case UmnView.DULUTH:
       return (collection: Collection) =>
         collection.library.value.startsWith('D');
-    case View.MORRIS:
+    case UmnView.MORRIS:
       return (collection: Collection) =>
         collection.library.value.startsWith('M');
     default: // assume Twin Cites by default
@@ -49,13 +50,13 @@ function collectionFilterFor(view: ViewCode) {
 @Component({
   template: '',
 })
-export class FilteredCollectionDiscoveryContainer {
+export class FilteredCollectionDiscoveryContainerComponent {
   private store = inject(Store);
 
   constructor() {
     const vid = this.store.selectSignal(selectViewId);
     const collections = this.store.selectSignal(selectCollectionsTree);
-    const filterFn = collectionFilterFor(vid() as ViewCode);
+    const filterFn = collectionFilterFor(vid() as UmnViewCode);
 
     this.store.dispatch({
       type: '[Collection Discovery] Get Collections Tree Success',
