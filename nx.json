@@ -133,6 +133,9 @@
     "@nx/angular:component": {
       "style": "scss",
       "skipSelector": true
+    },
+    "@nx/angular:library-secondary-entry-point": {
+      "skipModule": true
     }
   }
 }
