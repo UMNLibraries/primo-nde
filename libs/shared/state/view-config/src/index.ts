@@ -1,2 +1,3 @@
-export * from './lib/umn-view';
-export * from './lib/view-config.model';
+export * from './lib/umn-view.types';
+export * from './lib/view-config.types';
+export * from './lib/view-config.facade';
