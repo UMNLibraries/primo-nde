@@ -1,0 +1,62 @@
+<mat-card appearance="outlined">
+  @if (articles$ | async; as articles) {
+    <mat-card-header>
+      <mat-card-title
+        id="digital-delivery-card-header"
+        class="margin-bottom-big"
+        >{{ "Digital Delivery" + headerCount(articles) }}</mat-card-title
+      >
+    </mat-card-header>
+    @if (articles.length > 0) {
+      <mat-card-content>
+        <ul aria-labelledby="digital-delivery-card-header">
+          @for (article of articles | slice: 0 : 3; track article.txnNum) {
+            <li>
+              <a
+                tabindex="0"
+                [href]="article.url"
+                target="_blank"
+                class="item-details clickable"
+              >
+                <h3>{{ article.title }} / {{ article.author }}</h3>
+                <div class="account-item-divider"></div>
+              </a>
+            </li>
+          }
+        </ul>
+      </mat-card-content>
+      <mat-card-footer>
+        <a
+          tabindex="0"
+          [href]="allArticlesUrl"
+          target="_blank"
+          mat-button
+          [disableRipple]="true"
+          class="basic-button"
+          color="primary"
+          >All digital delivery documents
+          <span
+            ><mat-icon
+              aria-hidden="true"
+              fontIcon="open_in_new"
+            ></mat-icon></span
+        ></a>
+      </mat-card-footer>
+    } @else {
+      <mat-card-content>
+        <div class="center-content no-items-to-display">
+          <div class="icon-wrapper">
+            <mat-icon aria-hidden="true">laptop</mat-icon>
+          </div>
+          <p>No digital delivery documents</p>
+        </div>
+      </mat-card-content>
+    }
+  } @else {
+    <mat-card-content>
+      <div class="center-content">
+        <p>Loading digital delivery documents...</p>
+      </div>
+    </mat-card-content>
+  }
+</mat-card>

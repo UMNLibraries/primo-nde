@@ -1,0 +1,58 @@
+<mat-card appearance="outlined">
+  @if (requests$ | async; as requests) {
+    <mat-card-header>
+      <mat-card-title id="ill-requests-card-header" class="margin-bottom-big">{{
+        "Pending Interlibrary Loan Requests" + headerCount(requests)
+      }}</mat-card-title>
+    </mat-card-header>
+    @if (requests.length > 0) {
+      <mat-card-content>
+        <ul aria-labelledby="ill-requests-card-header">
+          @for (request of requests | slice: 0 : 3; track request.txnNum) {
+            <li>
+              <a
+                tabindex="0"
+                [href]="request.url"
+                target="_blank"
+                class="item-details clickable"
+              >
+                <h3>{{ request.title }}</h3>
+                <h4>{{ request.author }}</h4>
+                <div class="account-item-divider"></div>
+              </a>
+            </li>
+          }
+        </ul>
+      </mat-card-content>
+      <mat-card-footer>
+        <a
+          tabindex="0"
+          [href]="allRequestsUrl"
+          target="_blank"
+          mat-button
+          class="basic-button"
+          color="primary"
+          >All pending interlibrary loan requests
+          <span
+            ><mat-icon aria-hidden="true" fontIcon="open_in_new"></mat-icon
+          ></span>
+        </a>
+      </mat-card-footer>
+    } @else {
+      <mat-card-content>
+        <div class="center-content no-items-to-display">
+          <div class="icon-wrapper">
+            <mat-icon aria-hidden="true">library_books</mat-icon>
+          </div>
+          <p>No pending interlibrary loan requests</p>
+        </div>
+      </mat-card-content>
+    }
+  } @else {
+    <mat-card-content>
+      <div class="center-content">
+        <p>Loading interlibrary loan requests...</p>
+      </div>
+    </mat-card-content>
+  }
+</mat-card>
