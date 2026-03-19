@@ -23,7 +23,8 @@
       "@umn-nde/full-display": ["libs/full-display/src/index.ts"],
       "@umn-nde/shared-state/view-config": [
         "libs/shared/state/view-config/src/index.ts"
-      ]
+      ],
+      "@umn-nde/account": ["libs/account/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
