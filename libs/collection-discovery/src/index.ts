@@ -1,1 +1,1 @@
-export * from './lib/filter-collection-discovery-container/filter-campus-collections.component';
+export * from './lib/filter-campus-collections/filter-campus-collections.component';

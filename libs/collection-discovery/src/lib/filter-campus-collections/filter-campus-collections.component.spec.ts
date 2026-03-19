@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
-import { FilteredCollectionDiscoveryContainerComponent } from './filtered-collection-discovery-container.component';
+import { FilterCampusCollectionsComponent } from './filter-campus-collections.component';
 import { UmnView } from '@umn-nde/shared-state/view-config';
 
-describe('FilteredCollectionDiscoveryContainer', () => {
+describe('FilterCampusCollectionsComponent', () => {
   const allCollections = [
     { library: { value: 'CUMC' } },
     { library: { value: 'DUMD' } },
@@ -28,9 +28,7 @@ describe('FilteredCollectionDiscoveryContainer', () => {
       providers: [{ provide: Store, useValue: mockStore }],
     });
 
-    const fixture = TestBed.createComponent(
-      FilteredCollectionDiscoveryContainerComponent
-    );
+    const fixture = TestBed.createComponent(FilterCampusCollectionsComponent);
     const component = fixture.componentInstance;
 
     return { mockStore };
