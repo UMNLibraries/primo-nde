@@ -1,4 +1,8 @@
 import { selectorComponentMap as baseSelectorComponentMap } from '@umn-nde/base-view';
+import {
+  IllRequestsComponent,
+  DigitalDeliveryComponent,
+} from '@umn-nde/account';
 
 /**
  * Map custom components to Primo NDE components here like so:
@@ -9,4 +13,6 @@ import { selectorComponentMap as baseSelectorComponentMap } from '@umn-nde/base-
  */
 export const selectorComponentMap = new Map<string, unknown>([
   ...baseSelectorComponentMap,
+  ['nde-requests-overview-after', IllRequestsComponent],
+  ['nde-loans-overview-after', DigitalDeliveryComponent],
 ]);
