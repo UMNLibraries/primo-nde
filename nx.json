@@ -34,9 +34,9 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/{projectRoot}",
-        "index": "{projectRoot}/src/index.html",
-        "main": "{projectRoot}/src/main.ts",
-        "polyfills": ["zone.js"],
+        "index": "",
+        "main": "",
+        "polyfills": [],
         "tsConfig": "{projectRoot}/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "styles": [
