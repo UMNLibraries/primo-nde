@@ -119,7 +119,9 @@
       "e2eTestRunner": "none",
       "linter": "eslint",
       "style": "scss",
-      "unitTestRunner": "none"
+      "unitTestRunner": "none",
+      "routing": false,
+      "bundler": "webpack"
     },
     "@nx/angular:library": {
       "linter": "eslint",
