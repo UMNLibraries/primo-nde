@@ -8,8 +8,6 @@ const webpack = require('webpack');
 
 module.exports = (config, context) => {
   // can set/override custom config here (context is the nx ExecutorContext)
-  //console.dir(config, { depth: null });
-  //console.dir(context, { depth: null });
 
   const projectRoot = path.dirname(context.tsConfig);
 
@@ -44,6 +42,9 @@ module.exports = (config, context) => {
     include: [/libs\/shared\/state/],
     sideEffects: false,
   });
+
+  //console.dir(config, { depth: null });
+  //console.dir(context, { depth: null });
 
   return merge(config, mfConfig);
 };
