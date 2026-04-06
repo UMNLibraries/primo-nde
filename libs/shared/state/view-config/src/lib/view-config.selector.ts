@@ -6,3 +6,8 @@ export const selectViewConfig = createFeatureSelector<ViewConfig>('viewConfig');
 export const selectIsSandbox = createSelector(selectViewConfig, (state) =>
   state?.config?.['system-configuration']?.hostLB.includes('-psb.')
 );
+
+export const selectViewId = createSelector(
+  selectViewConfig,
+  (state) => state.config.vid
+);

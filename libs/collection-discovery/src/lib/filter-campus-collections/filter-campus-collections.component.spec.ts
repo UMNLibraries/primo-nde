@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { FilterCampusCollectionsComponent } from './filter-campus-collections.component';
-import { UmnView } from '@umn-nde/shared-state/view-config';
+import { UmnView, ViewConfigFacade } from '@umn-nde/shared-state/view-config';
 
 describe('FilterCampusCollectionsComponent', () => {
   const allCollections = [
@@ -20,12 +20,13 @@ describe('FilterCampusCollectionsComponent', () => {
       dispatch: vi.fn(),
     };
 
-    mockStore.selectSignal
-      .mockReturnValueOnce(vidSignal)
-      .mockReturnValueOnce(collectionsSignal);
+    mockStore.selectSignal.mockReturnValueOnce(collectionsSignal);
 
     TestBed.configureTestingModule({
-      providers: [{ provide: Store, useValue: mockStore }],
+      providers: [
+        { provide: Store, useValue: mockStore },
+        { provide: ViewConfigFacade, useValue: { vid: vidSignal } },
+      ],
     });
 
     const fixture = TestBed.createComponent(FilterCampusCollectionsComponent);

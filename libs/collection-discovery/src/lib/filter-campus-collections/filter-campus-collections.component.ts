@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import {
-  ViewConfig,
   UmnView,
   UmnViewCode,
+  ViewConfigFacade,
 } from '@umn-nde/shared-state/view-config';
 
 interface Collection {
@@ -13,11 +13,6 @@ interface CollectionDiscovery {
   collectionsTree: Collection[];
 }
 
-const selectViewConfig = createFeatureSelector<ViewConfig>('viewConfig');
-const selectViewId = createSelector(
-  selectViewConfig,
-  (state) => state.config.vid
-);
 const selectCollectionDiscovery = createFeatureSelector<CollectionDiscovery>(
   'collectionDiscovery'
 );
@@ -52,9 +47,10 @@ function collectionFilterFor(view: UmnViewCode) {
 })
 export class FilterCampusCollectionsComponent {
   private store = inject(Store);
+  private viewConfigFacade = inject(ViewConfigFacade);
 
   constructor() {
-    const vid = this.store.selectSignal(selectViewId);
+    const vid = this.viewConfigFacade.vid;
     const collections = this.store.selectSignal(selectCollectionsTree);
     const filterFn = collectionFilterFor(vid() as UmnViewCode);
 
