@@ -14,11 +14,11 @@ interface AlmaRequestInfo {
                 value: string;
                 category: string;
                 userAffiliatedCampus: boolean;
-              },
+              }
             ];
-          },
+          }
         ];
-      },
+      }
     ];
   };
 }
@@ -47,14 +47,14 @@ const LOCATIONS_TO_REMOVE = new Set([
   standalone: true,
   template: '',
 })
-export class FilterRequestPickupLocations implements OnInit {
+export class FilterRequestPickupLocationsComponent implements OnInit {
   @Input() hostComponent!: { requestsService: RequestsService };
 
   ngOnInit() {
     console.assert(
       !!this?.hostComponent?.requestsService?.getRequestServiceData,
       'requestsService.getRequestServiceData missing from hostComponent',
-      this.hostComponent,
+      this.hostComponent
     );
     monkeyPatchRequestsService(this.hostComponent.requestsService);
   }
@@ -82,9 +82,10 @@ function removeInvalidPickupLocations(almaRequestInfo: AlmaRequestInfo) {
     const updatedPickupLocation = origPickupLocation.filter(
       (location) =>
         // the location codes are sometimes suffixed with $$LIBRARY
-        !LOCATIONS_TO_REMOVE.has(location.key.replace(/\$\$LIBRARY$/, '')),
+        !LOCATIONS_TO_REMOVE.has(location.key.replace(/\$\$LIBRARY$/, ''))
     );
-    // @ts-ignore
+    // @ts-expect-error: Normally, any of properties in this path could be
+    // undefined, but they're guaranteed to be non-null in this block.
     almaRequestInfo['services-arr'].services[0][
       'groups-list-map'
     ][0].pickupLocation = updatedPickupLocation;
