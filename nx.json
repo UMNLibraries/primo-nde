@@ -121,7 +121,8 @@
       "style": "scss",
       "unitTestRunner": "none",
       "routing": false,
-      "bundler": "webpack"
+      "bundler": "webpack",
+      "prefix": "umn"
     },
     "@nx/angular:library": {
       "linter": "eslint",
@@ -130,11 +131,13 @@
       "flat": true,
       "skipTests": true,
       "style": "none",
-      "inlineTemplate": true
+      "inlineTemplate": true,
+      "prefix": "umn"
     },
     "@nx/angular:component": {
       "style": "scss",
-      "skipSelector": true
+      "skipSelector": true,
+      "changeDetection": "OnPush"
     },
     "@nx/angular:library-secondary-entry-point": {
       "skipModule": true
