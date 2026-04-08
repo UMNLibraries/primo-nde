@@ -33,7 +33,7 @@ module.exports = (config, context) => {
   config.plugins.push(
     new webpack.NormalModuleReplacementPlugin(
       /custom1-module\/customComponentMappings/,
-      `${projectRoot}/src/component-mappings.ts`
+      `${projectRoot}/src/app/component-mappings.ts`
     )
   );
 

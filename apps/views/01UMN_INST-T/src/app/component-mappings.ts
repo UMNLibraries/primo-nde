@@ -6,7 +6,7 @@ import {
 
 /**
  * Map custom components to Primo NDE components here like so:
- * [["nde-component-name", MyComponent], ...]
+ * [["nde-component-selector", MyComponent], ...]
  *
  * Webpack dynamically injects this module when the vendor AppModule imports:
  * `{selectorComponentMap} from "./custom1-module/customComponentMappings";`

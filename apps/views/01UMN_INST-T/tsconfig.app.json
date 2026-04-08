@@ -4,7 +4,7 @@
     "outDir": "../../../dist/out-tsc",
     "types": []
   },
-  "files": ["src/bootstrap.ts", "src/component-mappings.ts"],
+  "files": ["src/bootstrap.ts", "src/app/component-mappings.ts"],
   "include": ["src/**/*.d.ts"],
   "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
 }
