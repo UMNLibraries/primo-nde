@@ -1,1 +1,1 @@
-export * from './lib/search.component';
+export * from './lib/hathi-trust/hathi-trust.component';
