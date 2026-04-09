@@ -1,0 +1,27 @@
+{
+  "name": "morris-view",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/views/01UMN_INST-M/src",
+  "tags": [],
+  "targets": {
+    "serve": {},
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "morris-view:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "morris-view:build",
+        "spa": true
+      }
+    }
+  }
+}
