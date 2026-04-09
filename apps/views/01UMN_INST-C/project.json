@@ -1,0 +1,27 @@
+{
+  "name": "crookston-view",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/views/01UMN_INST-C/src",
+  "tags": [],
+  "targets": {
+    "serve": {},
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "crookston-view:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "crookston-view:build",
+        "spa": true
+      }
+    }
+  }
+}
