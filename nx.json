@@ -30,6 +30,7 @@
   ],
   "targetDefaults": {
     "build": {
+      "cache": true,
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
