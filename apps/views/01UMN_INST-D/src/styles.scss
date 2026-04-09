@@ -1,0 +1,27 @@
+@use 'base-view-styles';
+
+// accommodate custom ILLiad tiles in account overview page
+nde-requests-overview,
+nde-loans-overview {
+  > mat-card {
+    height: auto !important;
+    margin-bottom: 16px;
+  }
+}
+
+.overview-cards .account-card-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  mat-card {
+    flex: 1;
+  }
+
+  & > * {
+    display: contents;
+  }
+
+  .no-items-to-display {
+    min-height: 85px;
+  }
+}
