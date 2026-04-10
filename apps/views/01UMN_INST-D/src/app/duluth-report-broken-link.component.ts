@@ -8,7 +8,7 @@ import { ReportBrokenLinkComponent } from '@umn-nde/full-display';
   template: `<umn-report-broken-link
     url="https://d-umn.libwizard.com/f/report-a-problem"
     locationParam="3334539"
-    >Report a broken link</umn-report-broken-link
+    >Report an access issue</umn-report-broken-link
   >`,
 })
 export class DuluthReportBrokenLinkComponent {}
