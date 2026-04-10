@@ -14,9 +14,12 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'umn-report-broken-link',
   imports: [MatButtonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<a mat-button target="_blank" [href]="targetUrl()"
-    ><mat-icon>build</mat-icon><span><ng-content /></span
+  template: `<a mat-button mat-flat-button target="_blank" [href]="targetUrl()"
+    ><ng-content /><mat-icon>build</mat-icon><span></span
   ></a>`,
+  styles: `
+    mat-icon { color: var(--sys-on-primary); }
+  `,
 })
 export class ReportBrokenLinkComponent {
   private document = inject(DOCUMENT);
