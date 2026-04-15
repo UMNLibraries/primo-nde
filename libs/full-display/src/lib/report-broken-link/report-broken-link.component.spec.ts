@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DOCUMENT } from '@angular/common';
 import { ReportBrokenLinkComponent } from './report-broken-link.component';
 
@@ -19,8 +19,8 @@ class TestHostComponent {
 
 describe('ReportBrokenLinkComponent via Host', () => {
   let host: TestHostComponent;
-  let fixture: any;
-  let proxiedDocument: any;
+  let fixture: ComponentFixture<TestHostComponent>;
+  let proxiedDocument: { location: { href: string } };
 
   beforeEach(async () => {
     proxiedDocument = new Proxy(document, {
