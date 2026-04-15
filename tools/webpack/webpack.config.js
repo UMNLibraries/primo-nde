@@ -38,7 +38,7 @@ module.exports = (config, context) => {
   );
 
   // declare shared-state lib as side-effect free (tree shaking optimization)
-  config.module?.rules?.push({
+  config.module.rules.push({
     include: [/libs\/shared\/state/],
     sideEffects: false,
   });
