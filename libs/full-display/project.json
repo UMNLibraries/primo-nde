@@ -2,7 +2,7 @@
   "name": "full-display",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/full-display/src",
-  "prefix": "lib",
+  "prefix": "umn",
   "projectType": "library",
   "tags": ["type:lib-feature"],
   "targets": {

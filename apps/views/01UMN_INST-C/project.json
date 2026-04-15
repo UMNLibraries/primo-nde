@@ -2,7 +2,7 @@
   "name": "crookston-view",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "umn",
   "sourceRoot": "apps/views/01UMN_INST-C/src",
   "tags": [],
   "targets": {

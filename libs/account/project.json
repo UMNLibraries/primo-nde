@@ -2,7 +2,7 @@
   "name": "account",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/account/src",
-  "prefix": "lib",
+  "prefix": "umn",
   "projectType": "library",
   "tags": ["type:lib-feature"],
   "targets": {

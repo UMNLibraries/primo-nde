@@ -2,7 +2,7 @@
   "name": "collection-discovery",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/collection-discovery/src",
-  "prefix": "lib",
+  "prefix": "umn",
   "projectType": "library",
   "tags": ["type:lib-feature"],
   "targets": {

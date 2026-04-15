@@ -2,7 +2,7 @@
   "name": "search",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/search/src",
-  "prefix": "lib",
+  "prefix": "umn",
   "projectType": "library",
   "tags": [],
   "targets": {
