@@ -1,4 +1,4 @@
-export type HathiTrustQueryId = "oclc" | "isbn" | "issn";
+export type HathiTrustQueryId = 'oclc' | 'isbn' | 'issn';
 
 export class HathiTrustQuery {
   readonly oclc?: ReadonlyArray<string>;
@@ -14,32 +14,25 @@ export class HathiTrustQuery {
     return Object.entries(this)
       .filter(([_, values]) => values?.length > 0)
       .flatMap(([key, values]) => values.map((val: string) => `${key}:${val}`))
-      .join(";");
+      .join(';');
   }
 
   private validate(query: Partial<HathiTrustQuery>) {
-    const validIds: HathiTrustQueryId[] = ["oclc", "isbn", "issn"];
+    const validIds: HathiTrustQueryId[] = ['oclc', 'isbn', 'issn'];
     const hasAtLeastOneId = validIds.some(
       (id) => query[id] && query[id].length > 0
     );
     if (!hasAtLeastOneId) {
       throw new Error(
-        "HathiTrustQuery must have at least one of the following: " +
-          validIds.join(", ")
+        'HathiTrustQuery must have at least one of the following: ' +
+          validIds.join(', ')
       );
     }
   }
 }
 
-export interface HathiTrustResponse {
-  readonly records: { [id: string]: HathiTrustRecord };
-  readonly items: HathiTrustItem[] | [];
-}
-
-export class HathiTrustResponse {
-  static of(response: HathiTrustResponse) {
-    return Object.assign(new HathiTrustResponse(), response);
-  }
+export class HathiTrustItemAvailability {
+  constructor(private readonly response: HathiTrustResponse) {}
 
   /**
    * Finds the URL for a HathiTrust record, optionally ignoring copyright status.
@@ -48,16 +41,23 @@ export class HathiTrustResponse {
    * "Full View" usRightsString.
    * @returns The full-view URL if available, otherwise undefined.
    */
-  findFullViewUrl({ignoreCopyright = false} = {}): string | undefined {
-    const item = ignoreCopyright ? this.items[0] : this.findFullViewItem();
-    return item ? this.records[item.fromRecord].recordURL : undefined;
+  findFullViewUrl({ ignoreCopyright = false } = {}): string | undefined {
+    const item = ignoreCopyright
+      ? this.response.items[0]
+      : this.findFullViewItem();
+    return item ? this.response.records[item.fromRecord].recordURL : undefined;
   }
 
   private findFullViewItem() {
-    return this.items.find(
-      (item) => item.usRightsString.toLowerCase() === "full view"
+    return this.response.items.find(
+      (item) => item.usRightsString.toLowerCase() === 'full view'
     );
   }
+}
+
+export interface HathiTrustResponse {
+  readonly records: { [id: string]: HathiTrustRecord };
+  readonly items: HathiTrustItem[];
 }
 
 export interface HathiTrustRecord {
@@ -70,7 +70,7 @@ export interface HathiTrustRecord {
 }
 
 export interface HathiTrustFullRecord extends HathiTrustRecord {
-  readonly "marc-xml": string;
+  readonly 'marc-xml': string;
 }
 
 export interface HathiTrustItem {

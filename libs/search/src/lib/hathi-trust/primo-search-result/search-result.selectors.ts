@@ -43,7 +43,7 @@ export const selectFullDisplayWithDelivery = createSelector(
   selectFullDisplayRecordId,
   selectFullDisplayRecord,
   selectDeliveryEntities,
-  (recordId: string | null, record: any, deliveryEntities) => {
+  (recordId: string | null, record: Doc | null, deliveryEntities) => {
     if (recordId && record) {
       const delivery = deliveryEntities[recordId];
       return { ...record, ...delivery };

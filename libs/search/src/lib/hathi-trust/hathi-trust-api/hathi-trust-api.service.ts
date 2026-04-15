@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable, map, share, shareReplay } from 'rxjs';
+import { Observable, map, shareReplay } from 'rxjs';
 import {
+  HathiTrustItemAvailability,
   HathiTrustMultiIdResponse,
   HathiTrustQuery,
   HathiTrustResponse,
@@ -28,15 +29,18 @@ export class HathiTrustApiService {
     ReturnType<HathiTrustApiService['findFullTextUrl']>
   >();
 
-  find(query: HathiTrustQuery): Observable<HathiTrustResponse> {
-    return this.http
-      .get<HathiTrustMultiIdResponse>(BASE_URL + query)
-      .pipe(map(responseExtractor(query)), map(HathiTrustResponse.of));
+  find(query: HathiTrustQuery): Observable<HathiTrustItemAvailability> {
+    return this.http.get<HathiTrustMultiIdResponse>(BASE_URL + query).pipe(
+      map(responseExtractor(query)),
+      map((resp) => new HathiTrustItemAvailability(resp))
+    );
   }
 
   findFullTextUrl(query: HathiTrustQuery): Observable<string | undefined> {
-    if (this.fullTextUrlCache.has(query.toString())) {
-      return this.fullTextUrlCache.get(query.toString())!;
+    const key = query.toString();
+    const cachedUrl = this.fullTextUrlCache.get(key);
+    if (cachedUrl !== undefined) {
+      return cachedUrl;
     }
 
     const value$ = this.find(query).pipe(
@@ -48,9 +52,10 @@ export class HathiTrustApiService {
       shareReplay(1)
     );
 
-    this.fullTextUrlCache.set(query.toString(), value$);
+    this.fullTextUrlCache.set(key, value$);
+
     if (this.fullTextUrlCache.size > this.MAX_CACHE_SIZE) {
-      const firstKey = this.fullTextUrlCache.keys().next().value!;
+      const firstKey = this.fullTextUrlCache.keys().next().value;
       this.fullTextUrlCache.delete(firstKey);
     }
 

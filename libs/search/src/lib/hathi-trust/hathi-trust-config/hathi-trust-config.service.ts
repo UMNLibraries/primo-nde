@@ -1,4 +1,4 @@
-import { Inject, inject, Injectable } from "@angular/core";
+import { Inject, Injectable } from '@angular/core';
 
 interface HathiTrustModuleParameters {
   disableWhenAvailableOnline: boolean;
@@ -12,11 +12,11 @@ interface HathiTrustModuleParameters {
 }
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class HathiTrustConfigService {
   constructor(
-    @Inject("MODULE_PARAMETERS")
+    @Inject('MODULE_PARAMETERS')
     private moduleParameters: HathiTrustModuleParameters
   ) {}
 

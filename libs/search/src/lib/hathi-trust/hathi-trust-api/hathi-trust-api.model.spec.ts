@@ -1,8 +1,11 @@
-import { HathiTrustQuery, HathiTrustResponse } from './hathi-trust-api.model';
+import {
+  HathiTrustItemAvailability,
+  HathiTrustQuery,
+} from './hathi-trust-api.model';
 
 describe('HathiTrustQuery', () => {
   it('throws if constructed with no identifiers', () => {
-    expect(() => new HathiTrustQuery({})).toThrowError(
+    expect(() => new HathiTrustQuery({})).toThrow(
       /HathiTrustQuery must have at least one of the following/
     );
   });
@@ -66,7 +69,7 @@ describe('HathiTrustResponse', () => {
         },
       ],
     };
-    const resp = HathiTrustResponse.of(raw as any);
+    const resp = new HathiTrustItemAvailability(raw);
     expect(resp.findFullViewUrl()).toBe('https://hathitrust.org/recordA');
   });
 
@@ -86,7 +89,7 @@ describe('HathiTrustResponse', () => {
         },
       ],
     };
-    const resp = HathiTrustResponse.of(raw as any);
+    const resp = new HathiTrustItemAvailability(raw);
     expect(resp.findFullViewUrl()).toBeUndefined();
   });
 
@@ -106,7 +109,7 @@ describe('HathiTrustResponse', () => {
         },
       ],
     };
-    const resp = HathiTrustResponse.of(raw as any);
+    const resp = new HathiTrustItemAvailability(raw);
     expect(resp.findFullViewUrl({ ignoreCopyright: true })).toBe(
       'https://hathitrust.org/recordB'
     );
@@ -117,7 +120,7 @@ describe('HathiTrustResponse', () => {
       records: {},
       items: [],
     };
-    const resp = HathiTrustResponse.of(raw as any);
+    const resp = new HathiTrustItemAvailability(raw);
     expect(resp.findFullViewUrl()).toBeUndefined();
   });
 });

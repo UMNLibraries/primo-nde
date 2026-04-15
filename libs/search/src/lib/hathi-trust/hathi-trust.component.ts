@@ -12,7 +12,7 @@ import { SearchResultFacade } from './primo-search-result/search-result.facade';
 import { HathiTrustLinkComponent } from './hathi-trust-link/hathi-trust-link.component';
 import { TranslateService } from '@ngx-translate/core';
 
-interface NdeOnlineAvailability {
+export interface NdeOnlineAvailability {
   searchResult: Doc;
   isFullDisplay: boolean;
 }
@@ -27,9 +27,9 @@ const DEFAULT_AVAILABILITY_TEXT = 'Full text from HathiTrust';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (fullTextUrl$ | async; as url) {
-      <custom-hathi-trust-link [url]="url">
-        {{ availabilityText$ | async }}
-      </custom-hathi-trust-link>
+    <custom-hathi-trust-link [url]="url">
+      {{ availabilityText$ | async }}
+    </custom-hathi-trust-link>
     }
   `,
 })
@@ -45,9 +45,9 @@ export class HathiTrustComponent {
     return iif(
       () => this.isFullDisplay,
       this.searchResultFacade.currentFullDisplay$,
-      defer(() => this.searchResultFacade.getSearchResult(this.recordId)),
+      defer(() => this.searchResultFacade.getSearchResult(this.recordId))
     ).pipe(
-      switchMap((record) => this.hathiTrustService.findFullTextFor(record)),
+      switchMap((record) => this.hathiTrustService.findFullTextFor(record))
     );
   }
 
@@ -57,7 +57,7 @@ export class HathiTrustComponent {
         return translation === AVAILABILITY_TEXT_KEY
           ? DEFAULT_AVAILABILITY_TEXT
           : translation;
-      }),
+      })
     );
   }
 

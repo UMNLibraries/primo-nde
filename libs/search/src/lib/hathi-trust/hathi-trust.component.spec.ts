@@ -1,10 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { of, firstValueFrom } from 'rxjs';
-import { HathiTrustComponent } from './hathi-trust.component';
+import {
+  HathiTrustComponent,
+  NdeOnlineAvailability,
+} from './hathi-trust.component';
 import { HathiTrustService } from './hathi-trust.service';
 import { SearchResultFacade } from './primo-search-result/search-result.facade';
 import { TranslateService } from '@ngx-translate/core';
 import { vi } from 'vitest';
+import { Doc } from './primo-search-result/search.model';
 
 describe('HathiTrustComponent', () => {
   let component: HathiTrustComponent;
@@ -57,7 +61,7 @@ describe('HathiTrustComponent', () => {
     component.hostComponent = {
       isFullDisplay: true,
       searchResult: record,
-    } as any;
+    } as NdeOnlineAvailability;
 
     const url = await firstValueFrom(component.fullTextUrl$);
     expect(url).toBe('http://example.com/123');
@@ -67,7 +71,7 @@ describe('HathiTrustComponent', () => {
   it('calls getSearchResult when hostComponent.isFullDisplay is false', async () => {
     const hostComponentRecord = {
       pnx: { control: { recordid: ['123'] } },
-    } as any;
+    } as Doc;
     const storeRecord = { pnx: { control: { recordid: ['123'] } } };
     searchResultFacade.getSearchResult.mockReturnValue(of(storeRecord));
     hathiTrustService.findFullTextFor.mockReturnValue(
@@ -79,7 +83,7 @@ describe('HathiTrustComponent', () => {
     component.hostComponent = {
       isFullDisplay: false,
       searchResult: hostComponentRecord,
-    } as any;
+    } as NdeOnlineAvailability;
 
     const url = await firstValueFrom(component.fullTextUrl$);
     expect(url).toBe('http://example.com/123');

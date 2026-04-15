@@ -6,11 +6,14 @@ import { HathiTrustService } from './hathi-trust.service';
 import { HathiTrustApiService } from './hathi-trust-api/hathi-trust-api.service';
 import { HathiTrustConfigService } from './hathi-trust-config/hathi-trust-config.service';
 import { HathiTrustQuery } from './hathi-trust-api/hathi-trust-api.model';
+import { Doc } from './primo-search-result/search.model';
+
+type Mutable<T> = { -readonly [K in keyof T]: T[K] };
 
 describe('HathiTrustService', () => {
   let service: HathiTrustService;
   let apiMock: { findFullTextUrl: ReturnType<typeof vi.fn> };
-  let configMock: Partial<HathiTrustConfigService>;
+  let configMock: Mutable<HathiTrustConfigService>;
 
   beforeEach(() => {
     apiMock = {
@@ -41,7 +44,7 @@ describe('HathiTrustService', () => {
       context: 'X',
       pnx: { addata: {} },
       delivery: { GetIt1: [] },
-    } as any;
+    } as unknown as Doc;
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBeUndefined();
   });
@@ -51,14 +54,14 @@ describe('HathiTrustService', () => {
       context: 'L',
       pnx: { addata: {} },
       delivery: { GetIt1: [] },
-    } as any;
+    } as unknown as Doc;
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBeUndefined();
     expect(apiMock.findFullTextUrl).not.toHaveBeenCalled();
   });
 
   it('passes ISBNs to HT API when matchOnIsbn is true', async () => {
-    (configMock as any).matchOnIsbn = true;
+    configMock.matchOnIsbn = true;
     const returnedUrl = 'https://catalog.hathitrust.org/Record/123456789';
     apiMock.findFullTextUrl.mockReturnValue(of(returnedUrl));
 
@@ -66,7 +69,7 @@ describe('HathiTrustService', () => {
       context: 'L',
       pnx: { addata: { isbn: ['9781234567897'] } },
       delivery: { GetIt1: [] },
-    } as any;
+    } as unknown as Doc;
 
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBe(returnedUrl);
@@ -76,13 +79,13 @@ describe('HathiTrustService', () => {
   });
 
   it('returns undefined when disableWhenAvailableOnline is true and doc has online availability', async () => {
-    (configMock as any).disableWhenAvailableOnline = true;
-    (configMock as any).matchOnOclc = true;
+    configMock.disableWhenAvailableOnline = true;
+    configMock.matchOnOclc = true;
     const doc = {
       context: 'L',
       pnx: { addata: { oclcid: ['(OCoLC)12345'] } },
       delivery: { GetIt1: [{ links: [{ isLinktoOnline: true }] }] },
-    } as any;
+    } as unknown as Doc;
 
     apiMock.findFullTextUrl.mockReturnValue(of('should-not-be-called'));
 
@@ -92,7 +95,7 @@ describe('HathiTrustService', () => {
   });
 
   it('passes OCLC IDs to HT API when matchOnOclc true', async () => {
-    (configMock as any).matchOnOclc = true;
+    configMock.matchOnOclc = true;
     const returnedUrl = 'https://catalog.hathitrust.org/Record/123456789';
     apiMock.findFullTextUrl.mockReturnValue(of(returnedUrl));
 
@@ -100,7 +103,7 @@ describe('HathiTrustService', () => {
       context: 'L',
       pnx: { addata: { oclcid: ['(OCoLC)12345', 'ocn6789', 'notoclc'] } },
       delivery: { GetIt1: [] },
-    } as any;
+    } as unknown as Doc;
 
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBe(returnedUrl);
@@ -110,8 +113,8 @@ describe('HathiTrustService', () => {
   });
 
   it('passes ISSNs to HT API when matchOnIssn is true', async () => {
-    (configMock as any).matchOnIssn = true;
-    (configMock as any).matchOnOclc = true;
+    configMock.matchOnIssn = true;
+    configMock.matchOnOclc = true;
     const returnedUrl = 'https://catalog.hathitrust.org/Record/123456789';
     apiMock.findFullTextUrl.mockReturnValue(of(returnedUrl));
 
@@ -124,7 +127,7 @@ describe('HathiTrustService', () => {
         },
       },
       delivery: { GetIt1: [] },
-    } as any;
+    } as unknown as Doc;
 
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBe(returnedUrl);
@@ -134,14 +137,14 @@ describe('HathiTrustService', () => {
   });
 
   it('returns undefined when disableForJournals true and record is a journal', async () => {
-    (configMock as any).matchOnIssn = true;
-    (configMock as any).disableForJournals = true;
+    configMock.matchOnIssn = true;
+    configMock.disableForJournals = true;
 
     const doc = {
       context: 'L',
       pnx: { addata: { issn: ['0028-0836'], format: ['Journal'] } },
       delivery: { GetIt1: [] },
-    } as any;
+    } as unknown as Doc;
 
     apiMock.findFullTextUrl.mockReturnValue(of('should-not-be-called'));
 
