@@ -63,3 +63,28 @@ nde-request-form {
 .collection-grid-card .grid-collection-properties .collection-title {
   word-break: break-word !important;
 }
+
+// Related persons avatars to remove
+@mixin avatar-filter-match {
+  &:has(
+      [src*='Siyer-i_Nebi_158b.jpg' i],
+      [src*='Mohammed.jpg' i],
+      [src*='Muslim_depiction_of_Muhammad_-_17th_century_Ottoman_copy_from_the_%22Edinburgh_codex%22.jpg' i]
+    ) {
+    @content;
+  }
+}
+
+// Replace select related persons images with a generic avatar
+nde-entity-thumbnail,
+nde-entity-related-docs-list nde-virtual-browse-card {
+  @include avatar-filter-match {
+    img {
+      content: url(/nde/assets/images/defaultThumbnailIcons/icon_person.png) !important;
+
+      & + .thumbnail-license-icon-container {
+        display: none;
+      }
+    }
+  }
+}
