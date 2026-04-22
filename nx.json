@@ -84,7 +84,7 @@
       "executor": "@nx/angular:dev-server",
       "options": {
         "port": 4201,
-        "proxyConfig": "libs/vendor/custom-module/proxy/proxy.conf.mjs"
+        "proxyConfig": "tools/proxy/proxy.conf.mjs"
       },
       "configurations": {
         "production": {
