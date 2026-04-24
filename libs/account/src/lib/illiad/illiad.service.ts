@@ -13,27 +13,27 @@ import {
   providedIn: 'root',
 })
 export class IlliadService {
-  #http = inject(HttpClient);
-  #userFacade = inject(UserFacade);
-  #viewConfigFacade = inject(ViewConfigFacade);
-  #baseUrl = this.#viewConfigFacade.isSandbox()
+  private http = inject(HttpClient);
+  private userFacade = inject(UserFacade);
+  private viewConfigFacade = inject(ViewConfigFacade);
+  private baseUrl = this.viewConfigFacade.isSandbox()
     ? 'https://pralma-dev.lib.umn.edu/ill'
     : 'https://pralma.lib.umn.edu/ill';
 
   getRequests(): Observable<NormalizedIllTransaction[]> {
-    return this.get(`${this.#baseUrl}/requests`).pipe(
+    return this.get(`${this.baseUrl}/requests`).pipe(
       map(normalizeRequestTransactions)
     );
   }
 
   getArticles(): Observable<NormalizedIllTransaction[]> {
-    return this.get(`${this.#baseUrl}/articles`).pipe(
+    return this.get(`${this.baseUrl}/articles`).pipe(
       map(normalizeArticleTransactions)
     );
   }
 
   private get(url: string) {
-    const headers = { Authorization: `Bearer ${this.#userFacade.jwt()}` };
-    return this.#http.get<IlliadApiResponse>(url, { headers });
+    const headers = { Authorization: `Bearer ${this.userFacade.jwt()}` };
+    return this.http.get<IlliadApiResponse>(url, { headers });
   }
 }

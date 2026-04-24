@@ -21,9 +21,9 @@ import { articlePageUrl } from '../illiad-url.utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DigitalDeliveryComponent {
-  #illiadService = inject(IlliadService);
+  private illiadService = inject(IlliadService);
   allArticlesUrl = articlePageUrl();
-  articles$ = this.#illiadService.getArticles();
+  articles$ = this.illiadService.getArticles();
 
   headerCount(articles: NormalizedIllTransaction[]): string {
     const count = articles.length;

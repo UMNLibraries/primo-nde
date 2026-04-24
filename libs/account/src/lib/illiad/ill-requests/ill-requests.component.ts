@@ -21,9 +21,9 @@ import { requestPageUrl } from '../illiad-url.utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IllRequestsComponent {
-  #illiadService = inject(IlliadService);
+  private illiadService = inject(IlliadService);
   allRequestsUrl = requestPageUrl();
-  requests$ = this.#illiadService.getRequests();
+  requests$ = this.illiadService.getRequests();
 
   headerCount(requests: NormalizedIllTransaction[]): string {
     const count = requests.length;
