@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "umn",
   "sourceRoot": "apps/views/01UMN_INST-C/src",
-  "tags": [],
+  "tags": ["app-view"],
   "targets": {
     "serve": {},
     "extract-i18n": {

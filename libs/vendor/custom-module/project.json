@@ -2,6 +2,6 @@
   "name": "vendor-custom-module",
   "projectType": "library",
   "sourceRoot": "libs/vendor/custom-module",
-  "tags": ["vendor"],
+  "tags": ["lib-vendor"],
   "targets": {}
 }

@@ -4,7 +4,7 @@
   "sourceRoot": "libs/search/src",
   "prefix": "umn",
   "projectType": "library",
-  "tags": [],
+  "tags": ["lib-feature"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",

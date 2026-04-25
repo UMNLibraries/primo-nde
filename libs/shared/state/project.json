@@ -4,7 +4,7 @@
   "sourceRoot": "libs/shared/state/src",
   "prefix": "umn",
   "projectType": "library",
-  "tags": ["type:lib-shared"],
+  "tags": ["lib-shared"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",

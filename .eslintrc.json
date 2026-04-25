@@ -13,8 +13,32 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "app-view",
+                "onlyDependOnLibsWithTags": [
+                  "lib-view",
+                  "lib-vendor",
+                  "lib-feature"
+                ]
+              },
+              {
+                "sourceTag": "app-addon",
+                "onlyDependOnLibsWithTags": ["lib-vendor", "lib-feature"]
+              },
+              {
+                "sourceTag": "lib-view",
+                "onlyDependOnLibsWithTags": ["lib-vendor", "lib-feature"]
+              },
+              {
+                "sourceTag": "lib-feature",
+                "onlyDependOnLibsWithTags": ["lib-vendor", "lib-shared"]
+              },
+              {
+                "sourceTag": "lib-shared",
+                "onlyDependOnLibsWithTags": ["lib-shared"]
+              },
+              {
+                "sourceTag": "lib-vendor",
+                "onlyDependOnLibsWithTags": []
               }
             ]
           }
