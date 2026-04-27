@@ -1,5 +1,5 @@
 import { selectorComponentMap as baseSelectorComponentMap } from '@umn-nde/base-view';
-import { TwinCitiesReportBrokenLinkComponent } from './tc-report-broken-link.component';
+import { TwinCitiesProblemReportLinkComponent } from './tc-problem-report-link.component';
 import {
   IllRequestsComponent,
   DigitalDeliveryComponent,
@@ -16,5 +16,5 @@ export const selectorComponentMap = new Map<string, unknown>([
   ...baseSelectorComponentMap,
   ['nde-requests-overview-after', IllRequestsComponent],
   ['nde-loans-overview-after', DigitalDeliveryComponent],
-  ['nde-view-it-after', TwinCitiesReportBrokenLinkComponent],
+  ['nde-view-it-after', TwinCitiesProblemReportLinkComponent],
 ]);

@@ -1,15 +1,18 @@
 import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DOCUMENT } from '@angular/common';
-import { ReportBrokenLinkComponent } from './report-broken-link.component';
+import { ProblemReportLinkComponent } from './problem-report-link.component';
 
 @Component({
   standalone: true,
-  imports: [ReportBrokenLinkComponent],
+  imports: [ProblemReportLinkComponent],
   template: `
-    <umn-report-broken-link [url]="testUrl()" [locationParam]="testParam()">
+    <umn-problem-report-link
+      [baseUrl]="testUrl()"
+      [locationParam]="testParam()"
+    >
       Fix Me
-    </umn-report-broken-link>
+    </umn-problem-report-link>
   `,
 })
 class TestHostComponent {
