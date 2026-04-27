@@ -18,6 +18,7 @@ module.exports = (config, context) => {
       './custom-module': `${projectRoot}/src/bootstrap.ts`,
     },
     shared: share({
+      rxjs: { requiredVersion: 'auto' },
       '@angular/core': { requiredVersion: 'auto' },
       '@angular/common': { requiredVersion: 'auto' },
       '@angular/router': { requiredVersion: 'auto' },
@@ -25,7 +26,6 @@ module.exports = (config, context) => {
       '@angular/platform-browser': { requiredVersion: 'auto' },
       '@ngx-translate/core': { singleton: true },
       '@ngrx/store': { singleton: true },
-      rxjs: { requiredVersion: 'auto' },
     }),
   });
 
