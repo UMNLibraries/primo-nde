@@ -88,3 +88,11 @@ nde-entity-related-docs-list nde-virtual-browse-card {
     }
   }
 }
+
+// Temporary fix for user initial order
+#user-area-button span:not([class^="mat-"]) {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  display: inline-block !important;
+  line-height: 24px;
+}
