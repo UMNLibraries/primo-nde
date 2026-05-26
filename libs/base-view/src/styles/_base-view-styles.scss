@@ -69,7 +69,7 @@ nde-request-form {
   &:has(
       [src*='Siyer-i_Nebi_158b.jpg' i],
       [src*='Mohammed.jpg' i],
-      [src*='Muslim_depiction_of_Muhammad_-_17th_century_Ottoman_copy_from_the_%22Edinburgh_codex%22.jpg' i]
+      [src*='Muslim_depiction_of_Muhammad_-_17th_century_Ottoman_copy_from_the_' i]
     ) {
     @content;
   }
@@ -90,7 +90,7 @@ nde-entity-related-docs-list nde-virtual-browse-card {
 }
 
 // Temporary fix for user initial order
-#user-area-button span:not([class^="mat-"]) {
+#user-area-button span:not([class^='mat-']) {
   unicode-bidi: bidi-override;
   direction: rtl;
   display: inline-block !important;
