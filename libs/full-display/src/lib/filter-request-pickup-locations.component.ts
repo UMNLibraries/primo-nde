@@ -29,6 +29,7 @@ interface RequestsService {
 
 const REQUEST_TYPES_TO_OVERRIDE = new Set([
   'AlmaRequest',
+  'AlmaItemRequest',
   'RapidoPhysicalRequest',
 ]);
 
@@ -74,21 +75,21 @@ function monkeyPatchRequestsService(requestsService: RequestsService) {
 }
 
 function removeInvalidPickupLocations(almaRequestInfo: AlmaRequestInfo) {
-  const origPickupLocation =
-    almaRequestInfo['services-arr']?.services?.[0]?.['groups-list-map']?.[0]
-      .pickupLocation;
+  const groupsListMap =
+    almaRequestInfo['services-arr']?.services?.[0]?.['groups-list-map'];
 
-  if (origPickupLocation && origPickupLocation.length > 0) {
-    const updatedPickupLocation = origPickupLocation.filter(
-      (location) =>
-        // the location codes are sometimes suffixed with $$LIBRARY
-        !LOCATIONS_TO_REMOVE.has(location.key.replace(/\$\$LIBRARY$/, ''))
-    );
-    // @ts-expect-error: Normally, any of properties in this path could be
-    // undefined, but they're guaranteed to be non-null in this block.
-    almaRequestInfo['services-arr'].services[0][
-      'groups-list-map'
-    ][0].pickupLocation = updatedPickupLocation;
+  for (const group of groupsListMap ?? []) {
+    const origPickupLocation = group.pickupLocation;
+    if (origPickupLocation && origPickupLocation.length > 0) {
+      const updatedPickupLocation = origPickupLocation.filter(
+        (location) =>
+          // the location codes are sometimes suffixed with $$LIBRARY
+          !LOCATIONS_TO_REMOVE.has(location.key.replace(/\$\$LIBRARY$/, ''))
+      );
+      // @ts-expect-error: Normally, any of properties in this path could be
+      // undefined, but they're guaranteed to be non-null in this block.
+      group.pickupLocation = updatedPickupLocation;
+    }
   }
 
   return almaRequestInfo;
