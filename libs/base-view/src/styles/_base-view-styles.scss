@@ -96,3 +96,11 @@ nde-entity-related-docs-list nde-virtual-browse-card {
   display: inline-block !important;
   line-height: 24px;
 }
+
+// Fix the LibKey button hover style
+// The addon uses --mat-standard-button-toggle-selected-state-background-color,
+// which is technically meant for toggle buttons, not standard buttons.
+.ti-dropdown-button:hover,
+#ti-custom-button:hover {
+  background-color: inherit !important;
+}
