@@ -104,3 +104,15 @@ nde-entity-related-docs-list nde-virtual-browse-card {
 #ti-custom-button:hover {
   background-color: inherit !important;
 }
+
+.search-container > nde-top-bar {
+  background-color: var(--sys-primary) !important;
+
+  .advanced-search-button {
+    color: var(--sys-on-primary) !important;
+
+    svg path {
+      fill: var(--sys-on-primary) !important;
+    }
+  }
+}
