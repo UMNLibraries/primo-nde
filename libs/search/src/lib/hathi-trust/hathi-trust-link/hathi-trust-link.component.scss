@@ -6,4 +6,8 @@
   margin-top: 0.25rem;
   height: 32px;
   line-height: 32px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
