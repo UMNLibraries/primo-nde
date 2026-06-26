@@ -8,6 +8,7 @@ interface HathiTrustModuleParameters {
     oclc: boolean;
     isbn: boolean;
     issn: boolean;
+    lccn: boolean;
   };
 }
 
@@ -42,5 +43,9 @@ export class HathiTrustConfigService {
 
   get matchOnIssn(): boolean {
     return this.moduleParameters.matchOn?.issn ?? false;
+  }
+
+  get matchOnLccn(): boolean {
+    return this.moduleParameters.matchOn?.lccn ?? false;
   }
 }

@@ -41,6 +41,7 @@ export class HathiTrustService {
       ids.oclc = getAddata(doc, 'oclcid').flatMap(oclcFilter);
     if (this.config.matchOnIsbn) [ids.isbn] = getAddata(doc, 'isbn');
     if (this.config.matchOnIssn) [ids.issn] = getAddata(doc, 'issn');
+    if (this.config.matchOnLccn) [ids.lccn] = getAddata(doc, 'lccn');
     if (Object.values(ids).some((arr) => arr?.length > 0)) {
       return new HathiTrustQuery(ids);
     } else {

@@ -1,9 +1,10 @@
-export type HathiTrustQueryId = 'oclc' | 'isbn' | 'issn';
+export type HathiTrustQueryId = 'oclc' | 'isbn' | 'issn' | 'lccn';
 
 export class HathiTrustQuery {
   readonly oclc?: ReadonlyArray<string>;
   readonly isbn?: ReadonlyArray<string>;
   readonly issn?: ReadonlyArray<string>;
+  readonly lccn?: ReadonlyArray<string>;
 
   constructor(query: Partial<HathiTrustQuery>) {
     this.validate(query);
@@ -18,7 +19,7 @@ export class HathiTrustQuery {
   }
 
   private validate(query: Partial<HathiTrustQuery>) {
-    const validIds: HathiTrustQueryId[] = ['oclc', 'isbn', 'issn'];
+    const validIds: HathiTrustQueryId[] = ['oclc', 'isbn', 'issn', 'lccn'];
     const hasAtLeastOneId = validIds.some(
       (id) => query[id] && query[id].length > 0
     );

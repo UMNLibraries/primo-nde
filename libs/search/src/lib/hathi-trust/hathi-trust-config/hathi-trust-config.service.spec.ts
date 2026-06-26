@@ -31,7 +31,7 @@ describe("HathiTrustConfigService", () => {
             disableWhenAvailableOnline: false,
             disableForJournals: true,
             ignoreCopyright: true,
-            matchOn: { oclc: false, isbn: true, issn: true },
+            matchOn: { oclc: false, isbn: true, issn: true, lccn: true },
           },
         },
       ],
@@ -44,6 +44,7 @@ describe("HathiTrustConfigService", () => {
     expect(service.matchOnOclc).toBeFalsy();
     expect(service.matchOnIsbn).toBeTruthy();
     expect(service.matchOnIssn).toBeTruthy();
+    expect(service.matchOnLccn).toBeTruthy();
   });
 
   it("falls back to defaults for missing keys and partial matchOn", () => {
@@ -55,7 +56,7 @@ describe("HathiTrustConfigService", () => {
           useValue: {
             // only override one top-level and one nested key
             disableWhenAvailableOnline: false,
-            matchOn: { isbn: true }, // oclc and issn missing
+            matchOn: { isbn: true }, // lccn, oclc and issn missing
           },
         },
       ],
@@ -68,5 +69,6 @@ describe("HathiTrustConfigService", () => {
     expect(service.matchOnOclc).toBeTruthy(); // default true when missing
     expect(service.matchOnIsbn).toBeTruthy(); // provided true
     expect(service.matchOnIssn).toBeFalsy(); // default false when missing
+    expect(service.matchOnLccn).toBeFalsy(); // default false when missing
   });
 });

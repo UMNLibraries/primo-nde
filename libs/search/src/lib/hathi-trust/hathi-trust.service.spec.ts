@@ -24,6 +24,7 @@ describe('HathiTrustService', () => {
       matchOnIsbn: false,
       matchOnOclc: false,
       matchOnIssn: false,
+      matchOnLccn: false,
       disableWhenAvailableOnline: false,
       disableForJournals: false,
       ignoreCopyright: false,
@@ -135,6 +136,25 @@ describe('HathiTrustService', () => {
       new HathiTrustQuery({ oclc: ['12345', '6789'], issn: ['0028-0836'] })
     );
   });
+
+  it('passes LCCNs to HT API when matchOnLccn is true', async () => {
+    configMock.matchOnLccn = true;
+    const returnedUrl = 'https://catalog.hathitrust.org/Record/123456789';
+    apiMock.findFullTextUrl.mockReturnValue(of(returnedUrl));
+
+    const doc = {
+      context: 'L',
+      pnx: { addata: { lccn: ['01017798'] } },
+      delivery: { GetIt1: [] },
+    } as unknown as Doc;
+
+    const v = await firstValueFrom(service.findFullTextFor(doc));
+    expect(v).toBe(returnedUrl);
+    expect(apiMock.findFullTextUrl).toHaveBeenCalledWith(
+      new HathiTrustQuery({ lccn: ['01017798'] })
+    );
+  }
+  );
 
   it('returns undefined when disableForJournals true and record is a journal', async () => {
     configMock.matchOnIssn = true;
