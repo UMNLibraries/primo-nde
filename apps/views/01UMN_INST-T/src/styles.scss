@@ -25,3 +25,8 @@ nde-loans-overview {
     min-height: 85px;
   }
 }
+
+// hide the TC "online only" scope option (for Leganto)
+.options-container button[data-qa='online'] {
+  display: none;
+}

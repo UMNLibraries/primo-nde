@@ -116,3 +116,8 @@ nde-entity-related-docs-list nde-virtual-browse-card {
     }
   }
 }
+
+// hide the "cdi_unfiltered" scope option (for Rapido)
+.options-container button[data-qa='cdi_unfiltered'] {
+  display: none;
+}
