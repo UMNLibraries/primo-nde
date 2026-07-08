@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { selectUserJwt } from './user.selector';
+import { selectUserJwt } from './user.selectors';
 import { Store } from '@ngrx/store';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectIsSandbox, selectViewId } from './view-config.selector';
+import { selectIsSandbox, selectViewId } from './view-config.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class ViewConfigFacade {
