@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { UserFacade } from '@umn-nde/shared-state';
-import { ViewConfigFacade } from '@umn-nde/shared-state/view-config';
+import { ViewConfigFacade } from '@umn-nde/shared-state';
 import { map, Observable } from 'rxjs';
 import { IlliadApiResponse, NormalizedIllTransaction } from './illiad.types';
 import {
