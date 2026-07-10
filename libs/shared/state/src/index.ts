@@ -1,1 +1,1 @@
-export {};
+export * from './lib/user/user.facade';

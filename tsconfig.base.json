@@ -25,7 +25,7 @@
         "libs/shared/state/view-config/src/index.ts"
       ],
       "@umn-nde/account": ["libs/account/src/index.ts"],
-      "@umn-nde/shared-state/user": ["libs/shared/state/user/src/index.ts"],
+      "@umn-nde/shared-state": ["libs/shared/state/src/index.ts"],
       "@umn-nde/search": ["libs/search/src/index.ts"]
     }
   },
