@@ -1,6 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CollectionDiscovery } from './collection-discovery.model';
-import { selectViewId, UmnView } from '@umn-nde/shared-state/view-config';
+import { CollectionDiscovery } from './collection-discovery.types';
+import { selectViewId } from '../view-config/view-config.selectors';
+import { UmnView } from '../view-config/umn-view.types';
+
 
 export const selectCollectionDiscovery =
   createFeatureSelector<CollectionDiscovery>('collectionDiscovery');

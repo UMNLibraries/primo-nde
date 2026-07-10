@@ -1,6 +1,6 @@
 // collection-discovery.selectors.spec.ts
 import { selectCollectionsTreeForView } from './collection-discovery.selectors';
-import { UmnView } from '@umn-nde/shared-state/view-config';
+import { UmnView } from '../view-config/umn-view.types';
 
 describe('CollectionDiscovery Selectors', () => {
   // no need to test every possible library...
