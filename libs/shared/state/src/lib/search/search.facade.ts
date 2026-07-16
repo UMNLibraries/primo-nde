@@ -1,16 +1,26 @@
-import { Injectable, computed, inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { pcAvailabilityToggleChanged } from './search.actions';
 import {
+  selectDefaultPcAvailability,
+  selectPcAvailability,
   selectSearchScope,
-  selectPcAvailabilityToggleValue,
 } from './search.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class SearchFacade {
   private store = inject(Store);
-
-  searchScope = this.store.selectSignal(selectSearchScope);
-  pcAvailability = computed(
-    this.store.selectSignal(selectPcAvailabilityToggleValue(this.searchScope()))
+  readonly searchScope = this.store.selectSignal(selectSearchScope);
+  readonly pcAvailability = this.store.selectSignal(selectPcAvailability);
+  readonly defaultPcAvailability = this.store.selectSignal(
+    selectDefaultPcAvailability,
   );
+
+  togglePcAvailability(value: boolean) {
+    this.store.dispatch(
+      pcAvailabilityToggleChanged({
+        pcAvailabilityToggleValue: value,
+      }),
+    );
+  }
 }

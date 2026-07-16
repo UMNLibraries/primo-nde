@@ -5,68 +5,63 @@ export const selectViewConfig = createFeatureSelector<ViewConfig>('viewConfig');
 
 export const selectPrimoView = createSelector(
   selectViewConfig,
-  (state) => state?.config?.['primo-view']
+  (state) => state?.config?.['primo-view'],
+);
+
+export const selectPrimoViewScopesMap = createSelector(
+  selectPrimoView,
+  (primoView) => primoView?.scopes,
 );
 
 export const selectPrimoViewPcAvailabilityTabScopesMap = createSelector(
   selectPrimoView,
-  (primoView) => primoView?.['pc-availability-tab-scopes-map']
+  (primoView) => primoView?.['pc-availability-tab-scopes-map'],
 );
 
 export const selectPrimoViewScopeIds = createSelector(
   selectPrimoView,
-  (primoView) => primoView?.scopes.map((scope) => scope['scope-id'])
+  (primoView) => primoView?.scopes.map((scope) => scope['scope-id']),
 );
 
 export const selectDefaultScope = createSelector(
   selectPrimoViewScopeIds,
-  (scopes) => scopes?.[0]
+  (scopes) => scopes?.[0],
 );
-
-export const selectShowPcAvailability = (scope: string) =>
-  createSelector(
-    selectPrimoViewPcAvailabilityTabScopesMap,
-    (pcAvailabilityTabScopesMap) => {
-      return pcAvailabilityTabScopesMap
-        ? Object.values(pcAvailabilityTabScopesMap).some(
-            (tab) => tab[scope] === 'AVAILABLE_ONLY'
-          )
-        : false;
-    }
-  );
 
 export const selectSystemConfiguration = createSelector(
   selectViewConfig,
-  (state) => state?.config?.['system-configuration']
+  (state) => state?.config?.['system-configuration'],
 );
 
 export const selectSystemConfigurationValue = <
-  K extends keyof ViewConfig['config']['system-configuration']
+  K extends keyof ViewConfig['config']['system-configuration'],
 >(
-  key: K
+  key: K,
 ) =>
   createSelector(
     selectSystemConfiguration,
-    (systemConfiguration) => systemConfiguration?.[key]
+    (systemConfiguration) => systemConfiguration?.[key],
   );
 
 export const selectIsSandbox = createSelector(
   selectSystemConfigurationValue('hostLB'),
-  (hostLB) => hostLB.includes('-psb.')
+  (hostLB) => hostLB.includes('-psb.'),
 );
 
 export const selectViewId = createSelector(
   selectViewConfig,
-  (state) => state.config.vid
+  (state) => state.config.vid,
 );
+
+// TODO: there's a good chance that these Rapido selectors will not be needed.
 
 export const selectHideRapidoExpandLinkMap = createSelector(
   selectSystemConfigurationValue('hide_rapido_expand_link_map'),
-  (hideRapidoExpandLinkMap) => hideRapidoExpandLinkMap
+  (hideRapidoExpandLinkMap) => hideRapidoExpandLinkMap,
 );
 
 export const selectHideRapidoExpandLinkEnabled = (key: string) =>
   createSelector(
     selectHideRapidoExpandLinkMap,
-    (hideRapidoExpandLinkMap) => hideRapidoExpandLinkMap?.[key] ?? false
+    (hideRapidoExpandLinkMap) => hideRapidoExpandLinkMap?.[key] ?? false,
   );

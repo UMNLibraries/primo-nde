@@ -7,4 +7,5 @@ export interface SearchParams {
   q: string;
   tab: string;
   scope: string;
+  pcAvailability?: boolean;
 }
