@@ -1,7 +1,7 @@
 import { Type } from '@angular/core';
 import { FilterRequestPickupLocationsComponent } from '@umn-nde/full-display';
 import { FilterCampusCollectionsComponent } from '@umn-nde/collection-discovery';
-import { HathiTrustComponent } from '@umn-nde/search';
+import { HathiTrustComponent, ExcludeBeyondComponent } from '@umn-nde/search';
 
 type NdeSelector = `nde-${string}`;
 
@@ -13,4 +13,5 @@ export const selectorComponentMap = new Map<NdeSelector, Type<object>>([
   ],
   ['nde-requests-after', FilterRequestPickupLocationsComponent],
   ['nde-online-availability-before', HathiTrustComponent],
+  ['nde-search-filters-side-nav-top', ExcludeBeyondComponent],
 ]);

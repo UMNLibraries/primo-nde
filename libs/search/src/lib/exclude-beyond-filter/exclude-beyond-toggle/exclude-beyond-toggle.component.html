@@ -1,0 +1,13 @@
+@if (showToggle() === true) {
+  <mat-slide-toggle
+    color="primary"
+    (change)="toggleChange($event)"
+    [checked]="checked()"
+    aria-label="{{ checked() ? activeTip : inactiveTip }}"
+    matTooltip="{{ checked() ? activeTip : inactiveTip }}"
+    data-qa="umn-exclude-beyond-toggle"
+    [labelPosition]="'before'"
+  >
+    <span [innerHTML]="label" class=""></span>
+  </mat-slide-toggle>
+}
