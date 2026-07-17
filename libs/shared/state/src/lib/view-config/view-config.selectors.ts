@@ -28,6 +28,25 @@ export const selectDefaultScope = createSelector(
   (scopes) => scopes?.[0],
 );
 
+export const selectPcScopeIds = createSelector(
+  selectPrimoViewScopesMap,
+  (scopes) =>
+    scopes
+      ?.filter((scope) => scope['contains-central-index-scope'] === true)
+      .map((scope) => scope['scope-id']),
+);
+
+export const selectPcScopeIdsWithNoFullText = createSelector(
+  selectPrimoViewPcAvailabilityTabScopesMap,
+  (pcAvailabilityTabScopesMap) => {
+    if (!pcAvailabilityTabScopesMap) return [];
+    return Object.values(pcAvailabilityTabScopesMap)
+      .flatMap((scopeAvailability) => Object.entries(scopeAvailability))
+      .filter(([, availability]) => availability === 'INCLUDE_NO_FULL_TEXT')
+      .map(([scopeId]) => scopeId);
+  },
+);
+
 export const selectSystemConfiguration = createSelector(
   selectViewConfig,
   (state) => state?.config?.['system-configuration'],

@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { selectQueryParam as selectRouterQueryParam } from '../router/router.selectors';
 import {
-  selectPrimoViewPcAvailabilityTabScopesMap,
+  selectPcScopeIds,
+  selectPcScopeIdsWithNoFullText,
   selectPrimoViewScopeIds,
-  selectPrimoViewScopesMap,
 } from '../view-config/view-config.selectors';
 import { Search } from './search.types';
 
@@ -39,19 +39,11 @@ export const selectPcAvailability = createSelector(
 
 export const selectDefaultPcAvailability = createSelector(
   selectSearchScope,
-  selectPrimoViewScopesMap,
-  selectPrimoViewPcAvailabilityTabScopesMap,
-  (scope, scopesMap, pcAvailabilityTabScopesMap) => {
-    const isPcScope = scopesMap?.find(
-      (scopeObj) => scopeObj['scope-id'] === scope,
-    )?.['contains-central-index-scope'];
-    if (!isPcScope) {
-      return undefined;
-    }
-    return pcAvailabilityTabScopesMap
-      ? Object.values(pcAvailabilityTabScopesMap).some(
-          (tab) => tab[scope] === 'INCLUDE_NO_FULL_TEXT',
-        )
-      : false;
+  selectPcScopeIds,
+  selectPcScopeIdsWithNoFullText,
+  (scope, pcScopeIds, pcScopeIdsWithNoFullText) => {
+    if (!scope || !pcScopeIds.includes(scope)) return undefined;
+    if (pcScopeIdsWithNoFullText?.includes(scope)) return true;
+    return false;
   },
 );
