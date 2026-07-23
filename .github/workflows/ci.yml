@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: tree:0
+          fetch-depth: 0
+
+      # Cache node_modules
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Derive SHA values for nx affected commands
+        if: ${{ !env.ACT }}
+        uses: nrwl/nx-set-shas@v4
+
+      - name: Set Fallback SHAs for local act testing
+        if: ${{ env.ACT }}
+        run: |
+          echo "NX_BASE=HEAD~1" >> $GITHUB_ENV
+          echo "NX_HEAD=HEAD" >> $GITHUB_ENV
+
+      - name: Lint
+        run: npx nx affected -t lint
+
+      - name: Test
+        run: npx nx affected -t test
+
+      - name: Build
+        run: npx nx affected -t build
