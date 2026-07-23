@@ -21,12 +21,12 @@ export class HathiTrustQuery {
   private validate(query: Partial<HathiTrustQuery>) {
     const validIds: HathiTrustQueryId[] = ['oclc', 'isbn', 'issn', 'lccn'];
     const hasAtLeastOneId = validIds.some(
-      (id) => query[id] && query[id].length > 0
+      (id) => query[id] && query[id].length > 0,
     );
     if (!hasAtLeastOneId) {
       throw new Error(
         'HathiTrustQuery must have at least one of the following: ' +
-          validIds.join(', ')
+          validIds.join(', '),
       );
     }
   }
@@ -51,7 +51,7 @@ export class HathiTrustItemAvailability {
 
   private findFullViewItem() {
     return this.response.items.find(
-      (item) => item.usRightsString.toLowerCase() === 'full view'
+      (item) => item.usRightsString.toLowerCase() === 'full view',
     );
   }
 }

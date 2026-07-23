@@ -10,16 +10,11 @@ describe('CollectionDiscoveryFacade', () => {
   let store: MockStore;
 
   // just need a dummy object to verify it gets passed through.
-  const dummyCollections = [
-    { library: { value: 'TWILS' } }
-  ];
+  const dummyCollections = [{ library: { value: 'TWILS' } }];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        CollectionDiscoveryFacade,
-        provideMockStore(), 
-      ],
+      providers: [CollectionDiscoveryFacade, provideMockStore()],
     });
 
     facade = TestBed.inject(CollectionDiscoveryFacade);
@@ -31,15 +26,15 @@ describe('CollectionDiscoveryFacade', () => {
   it('should dispatch the filtered collections back to the store', () => {
     store.overrideSelector(
       CollectionDiscoverySelectors.selectCollectionsTreeForView,
-      dummyCollections
+      dummyCollections,
     );
 
     facade.filterCollectionsForView();
 
     expect(store.dispatch).toHaveBeenCalledWith(
       CollectionDiscoveryActions.getCollectionsTreeSuccessAction({
-        collections: dummyCollections
-      })
+        collections: dummyCollections,
+      }),
     );
   });
 });

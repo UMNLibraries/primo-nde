@@ -53,7 +53,7 @@ describe('HathiTrustComponent', () => {
     const record = { pnx: { control: { recordid: ['123'] } } };
     searchResultFacade.currentFullDisplay$ = of(record);
     hathiTrustService.findFullTextFor.mockReturnValue(
-      of('http://example.com/123')
+      of('http://example.com/123'),
     );
 
     const fixture = TestBed.createComponent(HathiTrustComponent);
@@ -75,7 +75,7 @@ describe('HathiTrustComponent', () => {
     const storeRecord = { pnx: { control: { recordid: ['123'] } } };
     searchResultFacade.getSearchResult.mockReturnValue(of(storeRecord));
     hathiTrustService.findFullTextFor.mockReturnValue(
-      of('http://example.com/123')
+      of('http://example.com/123'),
     );
 
     const fixture = TestBed.createComponent(HathiTrustComponent);

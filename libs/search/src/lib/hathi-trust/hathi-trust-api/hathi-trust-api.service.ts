@@ -32,7 +32,7 @@ export class HathiTrustApiService {
   find(query: HathiTrustQuery): Observable<HathiTrustItemAvailability> {
     return this.http.get<HathiTrustMultiIdResponse>(BASE_URL + query).pipe(
       map(responseExtractor(query)),
-      map((resp) => new HathiTrustItemAvailability(resp))
+      map((resp) => new HathiTrustItemAvailability(resp)),
     );
   }
 
@@ -47,9 +47,9 @@ export class HathiTrustApiService {
       map((hathiTrustResponse) =>
         hathiTrustResponse.findFullViewUrl({
           ignoreCopyright: this.config.ignoreCopyright,
-        })
+        }),
       ),
-      shareReplay(1)
+      shareReplay(1),
     );
 
     this.fullTextUrlCache.set(key, value$);

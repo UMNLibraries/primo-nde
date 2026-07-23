@@ -75,7 +75,7 @@ describe('HathiTrustService', () => {
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBe(returnedUrl);
     expect(apiMock.findFullTextUrl).toHaveBeenCalledWith(
-      new HathiTrustQuery({ isbn: ['9781234567897'] })
+      new HathiTrustQuery({ isbn: ['9781234567897'] }),
     );
   });
 
@@ -109,7 +109,7 @@ describe('HathiTrustService', () => {
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBe(returnedUrl);
     expect(apiMock.findFullTextUrl).toHaveBeenCalledWith(
-      new HathiTrustQuery({ oclc: ['12345', '6789'] })
+      new HathiTrustQuery({ oclc: ['12345', '6789'] }),
     );
   });
 
@@ -133,7 +133,7 @@ describe('HathiTrustService', () => {
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBe(returnedUrl);
     expect(apiMock.findFullTextUrl).toHaveBeenCalledWith(
-      new HathiTrustQuery({ oclc: ['12345', '6789'], issn: ['0028-0836'] })
+      new HathiTrustQuery({ oclc: ['12345', '6789'], issn: ['0028-0836'] }),
     );
   });
 
@@ -151,10 +151,9 @@ describe('HathiTrustService', () => {
     const v = await firstValueFrom(service.findFullTextFor(doc));
     expect(v).toBe(returnedUrl);
     expect(apiMock.findFullTextUrl).toHaveBeenCalledWith(
-      new HathiTrustQuery({ lccn: ['01017798'] })
+      new HathiTrustQuery({ lccn: ['01017798'] }),
     );
-  }
-  );
+  });
 
   it('returns undefined when disableForJournals true and record is a journal', async () => {
     configMock.matchOnIssn = true;

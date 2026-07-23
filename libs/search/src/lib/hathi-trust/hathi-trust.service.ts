@@ -71,13 +71,13 @@ function getAddata(doc: Doc, ...vals: string[]): string[][] {
 
 function hasOnlineAvailability(doc: Doc): boolean | undefined {
   return doc.delivery?.GetIt1.some((getit) =>
-    getit.links.some((link) => link.isLinktoOnline)
+    getit.links.some((link) => link.isLinktoOnline),
   );
 }
 
 function isJournal(doc: Doc): boolean {
   return doc.pnx.addata['format']?.some((format) =>
-    format.toLowerCase().includes('journal')
+    format.toLowerCase().includes('journal'),
   );
 }
 

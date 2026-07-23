@@ -2,7 +2,7 @@ import { articlePageUrl, requestPageUrl } from './illiad-url.utils';
 import { IlliadTransaction, NormalizedIllTransaction } from './illiad.types';
 
 export function normalizeRequestTransactions(
-  transactions: IlliadTransaction[]
+  transactions: IlliadTransaction[],
 ): NormalizedIllTransaction[] {
   return transactions.map((txn) => ({
     txnNum: txn.TransactionNumber,
@@ -13,7 +13,7 @@ export function normalizeRequestTransactions(
 }
 
 export function normalizeArticleTransactions(
-  transactions: IlliadTransaction[]
+  transactions: IlliadTransaction[],
 ): NormalizedIllTransaction[] {
   return transactions.map((txn) => ({
     txnNum: txn.TransactionNumber,

@@ -18,7 +18,7 @@ interface HathiTrustModuleParameters {
 export class HathiTrustConfigService {
   constructor(
     @Inject('MODULE_PARAMETERS')
-    private moduleParameters: HathiTrustModuleParameters
+    private moduleParameters: HathiTrustModuleParameters,
   ) {}
 
   get disableWhenAvailableOnline(): boolean {

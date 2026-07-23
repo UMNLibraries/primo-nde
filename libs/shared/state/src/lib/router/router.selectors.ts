@@ -5,10 +5,8 @@ export const selectRouter = createFeatureSelector<Router>('router');
 
 export const selectQueryParams = createSelector(
   selectRouter,
-  (router) => router?.state?.root?.queryParams
+  (router) => router?.state?.root?.queryParams,
 );
 
-export const selectQueryParam = (param: string) => createSelector(
-  selectQueryParams,
-  (queryParams) => queryParams?.[param]
-);
+export const selectQueryParam = (param: string) =>
+  createSelector(selectQueryParams, (queryParams) => queryParams?.[param]);

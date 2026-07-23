@@ -59,7 +59,7 @@ describe('ReportBrokenLinkComponent via Host', () => {
 
     const anchor = fixture.nativeElement.querySelector('a');
     const expectedUrl = `https://help.example.com/report-broken-link?source=${encodeURIComponent(
-      proxiedDocument.location.href
+      proxiedDocument.location.href,
     )}`;
 
     expect(anchor.href).toBe(expectedUrl);

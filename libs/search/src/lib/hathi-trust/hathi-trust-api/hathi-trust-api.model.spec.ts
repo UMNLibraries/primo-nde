@@ -6,7 +6,7 @@ import {
 describe('HathiTrustQuery', () => {
   it('throws if constructed with no identifiers', () => {
     expect(() => new HathiTrustQuery({})).toThrow(
-      /HathiTrustQuery must have at least one of the following/
+      /HathiTrustQuery must have at least one of the following/,
     );
   });
 
@@ -111,7 +111,7 @@ describe('HathiTrustResponse', () => {
     };
     const resp = new HathiTrustItemAvailability(raw);
     expect(resp.findFullViewUrl({ ignoreCopyright: true })).toBe(
-      'https://hathitrust.org/recordB'
+      'https://hathitrust.org/recordB',
     );
   });
 

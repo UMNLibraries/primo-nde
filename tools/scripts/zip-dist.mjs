@@ -17,8 +17,8 @@ const archive = archiver('zip', { zlib: { level: 9 } });
 
 output.on('close', () =>
   console.log(
-    `Successfully zipped ${archive.pointer()} total bytes to ${targetPath}`
-  )
+    `Successfully zipped ${archive.pointer()} total bytes to ${targetPath}`,
+  ),
 );
 archive.on('error', (err) => {
   throw err;

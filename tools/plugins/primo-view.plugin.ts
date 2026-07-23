@@ -52,7 +52,7 @@ export const createNodes: CreateNodesV2 = [
       },
       configFiles,
       options,
-      context
+      context,
     );
   },
 ];

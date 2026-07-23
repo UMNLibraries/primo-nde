@@ -67,10 +67,10 @@ nde-request-form {
 // Related persons avatars to remove
 @mixin avatar-filter-match {
   &:has(
-      [src*='Siyer-i_Nebi_158b.jpg' i],
-      [src*='Mohammed.jpg' i],
-      [src*='Muslim_depiction_of_Muhammad_-_17th_century_Ottoman_copy_from_the_' i]
-    ) {
+    [src*='Siyer-i_Nebi_158b.jpg' i],
+    [src*='Mohammed.jpg' i],
+    [src*='Muslim_depiction_of_Muhammad_-_17th_century_Ottoman_copy_from_the_' i]
+  ) {
     @content;
   }
 }

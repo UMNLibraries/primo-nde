@@ -27,7 +27,7 @@ export class SearchResultFacade {
     .select(selectFullDisplayWithDelivery)
     .pipe(
       filter((val) => val != null),
-      distinctUntilChanged()
+      distinctUntilChanged(),
     );
 
   /**
@@ -42,7 +42,7 @@ export class SearchResultFacade {
         ...searchEntities[id],
         ...deliveryEntities[id],
       })),
-      distinctUntilChanged()
+      distinctUntilChanged(),
     );
   }
 }

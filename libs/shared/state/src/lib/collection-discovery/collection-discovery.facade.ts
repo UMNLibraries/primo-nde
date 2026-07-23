@@ -25,7 +25,7 @@ export class CollectionDiscoveryFacade {
       .select(selectCollectionsTreeForView)
       .pipe(take(1))
       .subscribe((collections) =>
-        this.store.dispatch(getCollectionsTreeSuccessAction({ collections }))
+        this.store.dispatch(getCollectionsTreeSuccessAction({ collections })),
       );
   }
 }

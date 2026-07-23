@@ -2,7 +2,7 @@
   @if (requests$ | async; as requests) {
     <mat-card-header>
       <mat-card-title id="ill-requests-card-header" class="margin-bottom-big">{{
-        "Pending Interlibrary Loan Requests" + headerCount(requests)
+        'Pending Interlibrary Loan Requests' + headerCount(requests)
       }}</mat-card-title>
     </mat-card-header>
     @if (requests.length > 0) {

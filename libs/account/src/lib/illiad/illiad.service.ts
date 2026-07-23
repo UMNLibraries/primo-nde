@@ -22,13 +22,13 @@ export class IlliadService {
 
   getRequests(): Observable<NormalizedIllTransaction[]> {
     return this.get(`${this.baseUrl}/requests`).pipe(
-      map(normalizeRequestTransactions)
+      map(normalizeRequestTransactions),
     );
   }
 
   getArticles(): Observable<NormalizedIllTransaction[]> {
     return this.get(`${this.baseUrl}/articles`).pipe(
-      map(normalizeArticleTransactions)
+      map(normalizeArticleTransactions),
     );
   }
 

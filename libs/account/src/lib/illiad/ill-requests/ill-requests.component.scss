@@ -81,16 +81,16 @@ mat-card-footer {
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  height: 100%
+  height: 100%;
 }
 
 .no-items-to-display {
   min-height: 220px;
-  text-align: center
+  text-align: center;
 }
 
 .no-items-to-display svg {
-  fill: var(--secondaryActionIcon)
+  fill: var(--secondaryActionIcon);
 }
 
 .icon-wrapper {
@@ -100,5 +100,5 @@ mat-card-footer {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--sys-inverse-on-surface)
+  background-color: var(--sys-inverse-on-surface);
 }

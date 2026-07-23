@@ -33,8 +33,8 @@ module.exports = (config, context) => {
   config.plugins.push(
     new webpack.NormalModuleReplacementPlugin(
       /custom1-module\/customComponentMappings/,
-      `${projectRoot}/src/app/component-mappings.ts`
-    )
+      `${projectRoot}/src/app/component-mappings.ts`,
+    ),
   );
 
   // declare shared-state lib as side-effect free (tree shaking optimization)

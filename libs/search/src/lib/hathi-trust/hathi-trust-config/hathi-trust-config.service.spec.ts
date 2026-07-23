@@ -1,15 +1,12 @@
-import { TestBed } from "@angular/core/testing";
-import { HathiTrustConfigService } from "./hathi-trust-config.service";
+import { TestBed } from '@angular/core/testing';
+import { HathiTrustConfigService } from './hathi-trust-config.service';
 
-describe("HathiTrustConfigService", () => {
-  const TOKEN = "MODULE_PARAMETERS";
+describe('HathiTrustConfigService', () => {
+  const TOKEN = 'MODULE_PARAMETERS';
 
-  it("returns defaults when provided an empty parameters object", () => {
+  it('returns defaults when provided an empty parameters object', () => {
     TestBed.configureTestingModule({
-      providers: [
-        HathiTrustConfigService,
-        { provide: TOKEN, useValue: {} },
-      ],
+      providers: [HathiTrustConfigService, { provide: TOKEN, useValue: {} }],
     });
 
     const service = TestBed.inject(HathiTrustConfigService);
@@ -21,7 +18,7 @@ describe("HathiTrustConfigService", () => {
     expect(service.matchOnIssn).toBeFalsy(); // default false
   });
 
-  it("respects explicit module parameter values", () => {
+  it('respects explicit module parameter values', () => {
     TestBed.configureTestingModule({
       providers: [
         HathiTrustConfigService,
@@ -47,7 +44,7 @@ describe("HathiTrustConfigService", () => {
     expect(service.matchOnLccn).toBeTruthy();
   });
 
-  it("falls back to defaults for missing keys and partial matchOn", () => {
+  it('falls back to defaults for missing keys and partial matchOn', () => {
     TestBed.configureTestingModule({
       providers: [
         HathiTrustConfigService,

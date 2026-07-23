@@ -19,24 +19,24 @@ const deliveryFeature = createFeatureSelector<DeliveryState>('Delivery');
 
 export const selectFullDisplayRecordId = createSelector(
   fullDisplay,
-  (fullDisplay) => fullDisplay?.selectedRecordId ?? null
+  (fullDisplay) => fullDisplay?.selectedRecordId ?? null,
 );
 
 export const selectSearchEntities = createSelector(
   searchFeature,
-  (searchState) => searchState.entities
+  (searchState) => searchState.entities,
 );
 
 export const selectDeliveryEntities = createSelector(
   deliveryFeature,
-  (deliveryState) => deliveryState.entities
+  (deliveryState) => deliveryState.entities,
 );
 
 export const selectFullDisplayRecord = createSelector(
   selectFullDisplayRecordId,
   selectSearchEntities,
   (recordId: string | null, searchEntities) =>
-    recordId ? searchEntities[recordId] : null
+    recordId ? searchEntities[recordId] : null,
 );
 
 export const selectFullDisplayWithDelivery = createSelector(
@@ -49,5 +49,5 @@ export const selectFullDisplayWithDelivery = createSelector(
       return { ...record, ...delivery };
     }
     return null;
-  }
+  },
 );

@@ -15,7 +15,7 @@ describe('CollectionDiscovery Selectors', () => {
   it(`should filter out non-Crookston libraries when vid is ${UmnView.CROOKSTON}`, () => {
     const result = selectCollectionsTreeForView.projector(
       allCollections,
-      UmnView.CROOKSTON
+      UmnView.CROOKSTON,
     );
     expect(result).toHaveLength(1);
     expect(result[0].library.value).toBe('CUMC');
@@ -24,7 +24,7 @@ describe('CollectionDiscovery Selectors', () => {
   it(`should filter out non-Duluth libraries when vid is ${UmnView.DULUTH}`, () => {
     const result = selectCollectionsTreeForView.projector(
       allCollections,
-      UmnView.DULUTH
+      UmnView.DULUTH,
     );
     expect(result).toHaveLength(1);
     expect(result[0].library.value).toBe('DUMD');
@@ -33,7 +33,7 @@ describe('CollectionDiscovery Selectors', () => {
   it(`should filter out non-Morris libraries when vid is ${UmnView.MORRIS}`, () => {
     const result = selectCollectionsTreeForView.projector(
       allCollections,
-      UmnView.MORRIS
+      UmnView.MORRIS,
     );
     expect(result).toHaveLength(1);
     expect(result[0].library.value).toBe('MBRIG');
@@ -42,7 +42,7 @@ describe('CollectionDiscovery Selectors', () => {
   it(`should filter out non-Twin Cities libraries when vid is ${UmnView.TWINCITIES}`, () => {
     const result = selectCollectionsTreeForView.projector(
       allCollections,
-      UmnView.TWINCITIES
+      UmnView.TWINCITIES,
     );
     expect(result).toHaveLength(2);
     expect(result[0].library.value).toBe('TWILS');

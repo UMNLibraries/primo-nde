@@ -20,8 +20,12 @@ import { MatIconModule } from '@angular/material/icon';
     <ng-content />
   </a>`,
   styles: `
-    a:hover { text-decoration: none; }
-    mat-icon { color: var(--sys-on-primary); }
+    a:hover {
+      text-decoration: none;
+    }
+    mat-icon {
+      color: var(--sys-on-primary);
+    }
   `,
 })
 export class ProblemReportLinkComponent {
