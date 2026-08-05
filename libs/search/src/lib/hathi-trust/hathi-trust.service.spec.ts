@@ -95,6 +95,22 @@ describe('HathiTrustService', () => {
     expect(apiMock.findFullTextUrl).not.toHaveBeenCalled();
   });
 
+  it('returns undefined when disableWhenAvailableOnline is true and deliveryCategory is Alma-E', async () => {
+    configMock.disableWhenAvailableOnline = true;
+    configMock.matchOnOclc = true;
+    const doc = {
+      context: 'L',
+      pnx: { addata: { oclcid: ['(OCoLC)12345'] } },
+      delivery: { GetIt1: [], deliveryCategory: ['Alma-E'] },
+    } as unknown as Doc;
+
+    apiMock.findFullTextUrl.mockReturnValue(of('should-not-be-called'));
+
+    const v = await firstValueFrom(service.findFullTextFor(doc));
+    expect(v).toBeUndefined();
+    expect(apiMock.findFullTextUrl).not.toHaveBeenCalled();
+  });
+
   it('passes OCLC IDs to HT API when matchOnOclc true', async () => {
     configMock.matchOnOclc = true;
     const returnedUrl = 'https://catalog.hathitrust.org/Record/123456789';

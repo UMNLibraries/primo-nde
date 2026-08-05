@@ -70,6 +70,8 @@ function getAddata(doc: Doc, ...vals: string[]): string[][] {
 }
 
 function hasOnlineAvailability(doc: Doc): boolean | undefined {
+  if (!doc.delivery?.GetIt1 || doc.delivery.GetIt1.length === 0)
+    return doc.delivery?.deliveryCategory.includes('Alma-E');
   return doc.delivery?.GetIt1.some((getit) =>
     getit.links.some((link) => link.isLinktoOnline),
   );
