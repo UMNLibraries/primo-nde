@@ -10,9 +10,14 @@ permissions:
   actions: read
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   main:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,3 +51,20 @@ jobs:
 
       - name: Build
         run: npx nx affected -t build
+
+      - name: Create affected view packages (PR)
+        if: github.event_name == 'pull_request'
+        run: npx nx affected --target=package --projects=tag:app-view --configuration=production
+
+      - name: Create affected view packages (Main merge)
+        if: github.event_name == 'push'
+        run: npx nx run-many --target=package --projects=tag:app-view --configuration=production
+
+      - name: Upload view packages
+        if: ${{ !env.ACT }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: primo-view-zips-${{ github.sha }}
+          path: dist/packages/**/*.zip
+          retention-days: 7
+          if-no-files-found: ignore
