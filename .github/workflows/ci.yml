@@ -6,17 +6,17 @@ on:
       - main
   pull_request:
 
-permissions:
-  actions: read
-  contents: read
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  main:
+  ci:
     runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
