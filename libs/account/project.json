@@ -4,7 +4,7 @@
   "sourceRoot": "libs/account/src",
   "prefix": "umn",
   "projectType": "library",
-  "tags": ["lib-feature"],
+  "tags": ["type:feature", "scope:account"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",

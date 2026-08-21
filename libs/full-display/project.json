@@ -4,7 +4,7 @@
   "sourceRoot": "libs/full-display/src",
   "prefix": "umn",
   "projectType": "library",
-  "tags": ["lib-feature"],
+  "tags": ["type:feature", "scope:full-display"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",

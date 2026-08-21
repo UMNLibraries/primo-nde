@@ -4,7 +4,7 @@
   "sourceRoot": "libs/collection-discovery/src",
   "prefix": "umn",
   "projectType": "library",
-  "tags": ["lib-feature"],
+  "tags": ["type:feature", "scope:collection-discovery"],
   "targets": {
     "test": {
       "executor": "@nx/vitest:test",

@@ -13,32 +13,54 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "app-view",
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": ["type:core", "type:feature"]
+              },
+              {
+                "sourceTag": "type:core",
+                "onlyDependOnLibsWithTags": ["type:core", "type:feature"]
+              },
+              {
+                "sourceTag": "type:feature",
+                "notDependOnLibsWithTags": ["type:app"]
+              },
+              {
+                "sourceTag": "/^scope:(view|addon)/",
+                "onlyDependOnLibsWithTags": ["scope:*"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:vendor",
+                "onlyDependOnLibsWithTags": []
+              },
+              {
+                "sourceTag": "scope:account",
+                "onlyDependOnLibsWithTags": ["scope:account", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:collection-discovery",
                 "onlyDependOnLibsWithTags": [
-                  "lib-view",
-                  "lib-vendor",
-                  "lib-feature"
+                  "scope:collection-discovery",
+                  "scope:shared"
                 ]
               },
               {
-                "sourceTag": "app-addon",
-                "onlyDependOnLibsWithTags": ["lib-vendor", "lib-feature"]
+                "sourceTag": "scope:full-display",
+                "onlyDependOnLibsWithTags": [
+                  "scope:full-display",
+                  "scope:shared"
+                ]
               },
               {
-                "sourceTag": "lib-view",
-                "onlyDependOnLibsWithTags": ["lib-vendor", "lib-feature"]
-              },
-              {
-                "sourceTag": "lib-feature",
-                "onlyDependOnLibsWithTags": ["lib-vendor", "lib-shared"]
-              },
-              {
-                "sourceTag": "lib-shared",
-                "onlyDependOnLibsWithTags": ["lib-shared"]
-              },
-              {
-                "sourceTag": "lib-vendor",
-                "onlyDependOnLibsWithTags": []
+                "sourceTag": "scope:search",
+                "onlyDependOnLibsWithTags": [
+                  "scope:search",
+                  "scope:shared",
+                  "scope:vendor"
+                ]
               }
             ]
           }
