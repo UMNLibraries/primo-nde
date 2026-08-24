@@ -30,3 +30,8 @@ nde-loans-overview {
 .options-container button[data-qa='online'] {
   display: none;
 }
+
+// bump up the lower-right FAB container to avoid overlapping the TC chat link
+.side-bottom-buttons {
+  inset-block-end: 4rem !important;
+}
