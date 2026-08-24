@@ -1,0 +1,24 @@
+a[umnLibChatLauncher] {
+  display: inline-block;
+  transform: rotate(90deg);
+  transform-origin: right top;
+  position: fixed;
+  top: 400px;
+  right: 0px;
+  z-index: 99;
+  padding: 0.5em 1em;
+  background-color: var(--umn-maroon);
+  color: var(--umn-off-white);
+  font-weight: 400;
+  font-size: 1.2em;
+  border-color: var(--umn-off-white);
+  border-style: solid;
+  border-width: 0px 4px 4px;
+  box-shadow: rgb(204, 204, 204) 0px 0px 5px;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    box-shadow: none;
+  }
+}
