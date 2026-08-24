@@ -15,6 +15,21 @@ $lightGrey: #d5d6d2;
 $lighterGrey: #f0efee;
 $offWhite: #f9f7f6;
 
+:root {
+  --umn-maroon: #{$maroon};
+  --umn-dark-maroon: #{$darkMaroon};
+  --umn-light-Maroon: #{$lightMaroon};
+  --umn-gold: #{$gold};
+  --umn-light-gold: #{$lightGold};
+  --umn-dark-gold: #{$darkGold};
+  --umn-darker-grey: #{$darkerGrey};
+  --umn-dark-grey: #{$darkGrey};
+  --umn-medium-grey: #{$mediumGrey};
+  --umn-light-grey: #{$lightGrey};
+  --umn-lighter-grey: #{$lighterGrey};
+  --umn-off-white: #{$offWhite};
+}
+
 // TODO: consider overriding some of the color vars in _nde-variables.scss
 // (e.g. --lightBG)
 
