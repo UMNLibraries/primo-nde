@@ -1,5 +1,6 @@
 import { selectorComponentMap as baseSelectorComponentMap } from '@umn-nde/base-view';
 import { DuluthProblemReportLinkComponent } from './duluth-problem-report-link.component';
+import { FooterComponent } from './footer/footer.component';
 
 /**
  * Map custom components to Primo NDE components here.
@@ -11,4 +12,5 @@ import { DuluthProblemReportLinkComponent } from './duluth-problem-report-link.c
 export const selectorComponentMap: typeof baseSelectorComponentMap = new Map([
   ...baseSelectorComponentMap,
   ['nde-view-it-after', DuluthProblemReportLinkComponent],
+  ['nde-footer', FooterComponent],
 ]);
