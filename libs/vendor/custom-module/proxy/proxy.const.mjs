@@ -6,4 +6,6 @@ const environments = {
   production: 'https://primo.lib.umn.edu',
 };
 
-export const PROXY_TARGET = process.env.PROXY_TARGET ?? environments['sandbox'];
+export const PROXY_TARGET = process.env.PROXY_TARGET ?? environments['production'];
+
+console.log(`[proxy] Active proxy target: ${PROXY_TARGET}`);
