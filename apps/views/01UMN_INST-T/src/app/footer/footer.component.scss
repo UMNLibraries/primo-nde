@@ -1,0 +1,22 @@
+a[umnLibChatLauncher] {
+  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  right: 1em;
+  padding: 0.8em 1.2em;
+  background-color: #34610f;
+  color: var(--umn-off-white);
+  font-weight: 400;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  svg {
+    fill: var(--umn-off-white);
+    height: 1em;
+    width: 1em;
+  }
+}
