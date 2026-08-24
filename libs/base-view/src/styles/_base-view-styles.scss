@@ -121,3 +121,13 @@ nde-entity-related-docs-list nde-virtual-browse-card {
 .options-container button[data-qa='cdi_unfiltered'] {
   display: none;
 }
+
+// match the inner iframe background color in the LibChat dialog
+.libchat-dialog-panel .mat-mdc-dialog-surface {
+  background-color: #f9f9f9;
+}
+
+// don't show the report a problem FAB
+nde-report-a-problem {
+  display: none;
+}
