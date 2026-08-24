@@ -131,3 +131,8 @@ nde-entity-related-docs-list nde-virtual-browse-card {
 nde-report-a-problem {
   display: none;
 }
+
+// reset the hover style on the OTB home page welcome button
+.main-landing-page .welcome-announcements-container .welcome a:hover {
+  background-color: var(--sys-primary) !important;
+}
