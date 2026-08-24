@@ -4,6 +4,7 @@ import {
   IllRequestsComponent,
   DigitalDeliveryComponent,
 } from '@umn-nde/account';
+import { FooterComponent } from './footer/footer.component';
 
 /**
  * Map custom components to Primo NDE components here.
@@ -17,4 +18,5 @@ export const selectorComponentMap: typeof baseSelectorComponentMap = new Map([
   ['nde-requests-overview-after', IllRequestsComponent],
   ['nde-loans-overview-after', DigitalDeliveryComponent],
   ['nde-view-it-after', TwinCitiesProblemReportLinkComponent],
+  ['nde-footer-after', FooterComponent],
 ]);
