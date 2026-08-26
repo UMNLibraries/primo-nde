@@ -21,3 +21,11 @@
 - The `nx-generate` skill handles generator discovery internally - don't call nx_docs just to look up generator syntax
 
 <!-- nx configuration end-->
+
+## Important nx usage note
+
+- Use `npx nx` to run Nx commands (not `pnpm nx` or a globally installed `nx`).
+
+## Testing
+
+- Unit tests follow the SIFERS pattern. See `.github/instructions/unit-testing.instructions.md` for guidelines and examples.
