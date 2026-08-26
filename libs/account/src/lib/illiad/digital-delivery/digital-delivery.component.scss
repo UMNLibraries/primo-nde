@@ -8,6 +8,7 @@ mat-card {
   border-radius: 8px;
   padding: 5px;
   gap: 16px;
+
   //  height: 100%;
   //  width: 100%;
 }
@@ -27,6 +28,7 @@ mat-card-content {
 
 mat-card-footer {
   padding-inline: 0.5rem;
+
   a mat-icon {
     font-size: 14px;
     height: 14px;
@@ -90,6 +92,7 @@ mat-card-footer {
 }
 
 .no-items-to-display svg {
+  // stylelint-disable-next-line no-unknown-custom-properties
   fill: var(--secondaryActionIcon);
 }
 

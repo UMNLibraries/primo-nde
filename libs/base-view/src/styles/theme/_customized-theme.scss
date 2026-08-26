@@ -25,16 +25,19 @@
   @include mat.system-level-colors(m3-theme.$light-theme);
 
   // override color tokens (can't use mat.theme-overrides mixin with v18)
+  // primary color
   --sys-primary: var(--umn-maroon);
   --sys-on-primary: #ffffff;
   --sys-primary-container: var(--umn-light-gold);
   --sys-on-primary-container: var(--umn-maroon);
 
+  // secondary color
   --sys-secondary: var(--umn-darker-grey);
   --sys-on-secondary: #ffffff;
   --sys-secondary-container: var(--umn-light-gold);
   --sys-on-secondary-container: var(--umn-maroon);
 
+  // tertiary color
   --sys-tertiary: var(--umn-dark-gold);
   --sys-on-tertiary: var(--umn-darker-grey);
   --sys-tertiary-container: var(--umn-off-white);
@@ -54,30 +57,37 @@
   --sys-surface-container-high: var(--umn-lighter-grey);
   --sys-surface-container-highest: var(--umn-light-grey);
 
+  // primary fixed accent colors
   --sys-primary-fixed: var(--umn-maroon);
   --sys-primary-fixed-dim: var(--umn-light-maroon);
   --sys-on-primary-fixed: #ffffff;
   --sys-on-primary-fixed-variant: #ffffff;
 
+  // secondary fixed accent colors
   --sys-secondary-fixed: var(--umn-gold);
   --sys-secondary-fixed-dim: var(--umn-dark-gold);
   --sys-on-secondary-fixed: var(--umn-darker-grey);
   --sys-on-secondary-fixed-variant: var(--umn-darker-grey);
 
+  // tertiary fixed accent colors
   --sys-tertiary-fixed: var(--umn-gold);
   --sys-tertiary-fixed-dim: var(--umn-dark-gold);
   --sys-on-tertiary-fixed: var(--umn-darker-grey);
   --sys-on-tertiary-fixed-variant: var(--umn-darker-grey);
-  //--sys-on-tertiary-fixed-variant: var(--umn-dark-maroon);
 
+  // --sys-on-tertiary-fixed-variant: var(--umn-dark-maroon);
+
+  // inverse colors
   --sys-inverse-surface: var(--umn-darker-grey);
   --sys-inverse-on-surface: var(--umn-off-white);
   --sys-inverse-primary: var(--umn-light-gold);
 
+  // outline and surface variant colors
   --sys-outline: var(--umn-medium-grey);
   --sys-outline-variant: var(--umn-light-grey);
   --sys-surface-variant: var(--umn-lighter-grey);
   --sys-on-surface-variant: var(--umn-dark-grey);
+
   //  --sys-error: var(--umn-dark-maroon);
   //  --sys-on-error: #ffffff;
   //  --sys-scrim: #000000;
@@ -86,17 +96,18 @@
   // Button Ripples ///////////////////////////////////////////////////////////
   // This should set the ripple color for primary buttons,
   // but it doesn't seem to work...
-  //--mat-sys-hover-state-layer-color: var(--umn-darker-grey);
-  //--mat-sys-focus-state-layer-color: var(--umn-darker-grey);
-  //--mat-sys-pressed-state-layer-color: var(--umn-darker-grey);
+  // --mat-sys-hover-state-layer-color: var(--umn-darker-grey);
+  // --mat-sys-focus-state-layer-color: var(--umn-darker-grey);
+  // --mat-sys-pressed-state-layer-color: var(--umn-darker-grey);
 
   // This does work, but we'd need to account for lots of specific button types
-  //--mat-outlined-button-state-layer-color: var(--umn-darker-grey);
-  //--mat-...-state-layer-color: ...
+  // --mat-outlined-button-state-layer-color: var(--umn-darker-grey);
+  // --mat-...-state-layer-color: ...
 
   // Workaround to force neutral ripple color on buttons
   // This will probably need to be updated if we move to a new version of MD
-  --mat-ripple-color: rgba(51, 51, 51, 0.1);
+  --mat-ripple-color: rgb(51 51 51 10%);
+
   @include mat.button-overrides(
     (
       ripple-color: var(--mat-ripple-color),

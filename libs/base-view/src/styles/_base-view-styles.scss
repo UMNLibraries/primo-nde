@@ -8,6 +8,7 @@
   background-color: var(--umn-light-gold) !important;
 }
 
+// stylelint-disable-next-line selector-class-pattern
 .webOfScience-badge,
 .scopus-badge {
   // these use --sys-primary-container backgrounds by default,
@@ -39,6 +40,7 @@ button.quicklink-menu-item svg path {
 }
 
 // don't show the user group or exp date in the account page
+// stylelint-disable-next-line selector-class-pattern
 .user-Expiration-date-and-patron-group {
   display: none;
 }
@@ -80,7 +82,7 @@ nde-entity-thumbnail,
 nde-entity-related-docs-list nde-virtual-browse-card {
   @include avatar-filter-match {
     img {
-      content: url(/nde/assets/images/defaultThumbnailIcons/icon_person.png) !important;
+      content: url('/nde/assets/images/defaultThumbnailIcons/icon_person.png') !important;
 
       & + .thumbnail-license-icon-container {
         display: none;

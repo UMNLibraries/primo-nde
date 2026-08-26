@@ -4,7 +4,7 @@ a[umnLibChatLauncher] {
   transform-origin: right top;
   position: fixed;
   top: 400px;
-  right: 0px;
+  right: 0;
   z-index: 99;
   padding: 0.5em 1em;
   background-color: var(--umn-maroon);
@@ -13,8 +13,8 @@ a[umnLibChatLauncher] {
   font-size: 1.2em;
   border-color: var(--umn-off-white);
   border-style: solid;
-  border-width: 0px 4px 4px;
-  box-shadow: rgb(204, 204, 204) 0px 0px 5px;
+  border-width: 0 4px 4px;
+  box-shadow: rgb(204 204 204) 0 0 5px;
 
   &:hover,
   &:focus {
