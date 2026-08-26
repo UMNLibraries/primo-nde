@@ -61,11 +61,6 @@ nde-request-form {
   }
 }
 
-// fix word-break in collection discovery cards
-.collection-grid-card .grid-collection-properties .collection-title {
-  word-break: break-word !important;
-}
-
 // Related persons avatars to remove
 @mixin avatar-filter-match {
   &:has(
