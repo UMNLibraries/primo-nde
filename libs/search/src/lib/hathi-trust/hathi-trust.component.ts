@@ -4,8 +4,9 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { Doc } from './primo-search-result/search.model';
-import { Observable, switchMap, map, iif, defer } from 'rxjs';
+import type { Doc } from './primo-search-result/search.model';
+import type { Observable } from 'rxjs';
+import { switchMap, map, iif, defer } from 'rxjs';
 import { HathiTrustService } from './hathi-trust.service';
 import { AsyncPipe } from '@angular/common';
 import { SearchResultFacade } from './primo-search-result/search-result.facade';

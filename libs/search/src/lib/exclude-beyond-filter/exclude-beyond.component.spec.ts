@@ -1,7 +1,8 @@
-import { ComponentRef } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import type { ComponentRef } from '@angular/core';
+import type { ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { vi } from 'vitest';
-import { ExcludeBeyondToggleComponent } from './exclude-beyond-toggle/exclude-beyond-toggle.component';
+import type { ExcludeBeyondToggleComponent } from './exclude-beyond-toggle/exclude-beyond-toggle.component';
 import { ExcludeBeyondComponent } from './exclude-beyond.component';
 
 describe('ExcludeBeyondComponent', () => {

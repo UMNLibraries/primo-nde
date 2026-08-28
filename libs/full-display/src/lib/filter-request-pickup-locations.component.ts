@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import type { OnInit } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import type { Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 interface AlmaRequestInfo {
   'services-arr'?: {
@@ -45,6 +47,7 @@ const LOCATIONS_TO_REMOVE = new Set([
  * locations from the request from.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   template: '',
 })

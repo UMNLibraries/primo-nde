@@ -1,5 +1,8 @@
 import { articlePageUrl, requestPageUrl } from './illiad-url.utils';
-import { IlliadTransaction, NormalizedIllTransaction } from './illiad.types';
+import type {
+  IlliadTransaction,
+  NormalizedIllTransaction,
+} from './illiad.types';
 
 export function normalizeRequestTransactions(
   transactions: IlliadTransaction[],

@@ -1,24 +1,17 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import type { ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { describe, it, expect, beforeEach } from 'vitest';
-import {
-  LibChatDialogComponent,
-  LibChatDialogData,
-} from './libchat-dialog.component';
-
-@Component({
-  standalone: true,
-  imports: [LibChatDialogComponent],
-  template: `<umn-libchat-dialog />`,
-})
-class TestHostComponent {}
+import { describe, it, expect } from 'vitest';
+import type { LibChatDialogData } from './libchat-dialog.component';
+import { LibChatDialogComponent } from './libchat-dialog.component';
 
 describe('LibChatDialogComponent', () => {
-  function setup(dialogData: LibChatDialogData = { url: 'https://example.com/chat' }) {
+  function setup(
+    dialogData: LibChatDialogData = { url: 'https://example.com/chat' },
+  ) {
     TestBed.configureTestingModule({
       imports: [LibChatDialogComponent, MatDialogModule, NoopAnimationsModule],
       providers: [{ provide: MAT_DIALOG_DATA, useValue: dialogData }],

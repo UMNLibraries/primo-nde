@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Doc, DocDelivery } from './search.model';
+import type { Doc, DocDelivery } from './search.model';
 
 interface FullDisplayState {
   selectedRecordId: string | null;

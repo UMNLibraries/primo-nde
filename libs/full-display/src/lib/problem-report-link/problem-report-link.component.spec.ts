@@ -1,9 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import type { ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { DOCUMENT } from '@angular/common';
 import { ProblemReportLinkComponent } from './problem-report-link.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ProblemReportLinkComponent],
   template: `

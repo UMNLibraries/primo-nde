@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import type { ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,6 +9,7 @@ import { LibChatLauncherDirective } from './libchat-launcher.directive';
 import { LibChatDialogComponent } from './libchat-dialog/libchat-dialog.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [LibChatLauncherDirective],
   template: `<a umnLibChatLauncher [href]="href">Chat</a>`,
@@ -42,7 +44,10 @@ describe('LibChatLauncherDirective', () => {
   it('should open the LibChatDialogComponent on click', () => {
     const { anchor, openSpy } = setup();
     anchor.triggerEventHandler('click', new MouseEvent('click'));
-    expect(openSpy).toHaveBeenCalledWith(LibChatDialogComponent, expect.any(Object));
+    expect(openSpy).toHaveBeenCalledWith(
+      LibChatDialogComponent,
+      expect.any(Object),
+    );
   });
 
   it('should pass the href as the dialog url', () => {
@@ -57,13 +62,19 @@ describe('LibChatLauncherDirective', () => {
 
   it('should not open the dialog when Ctrl+click', () => {
     const { anchor, openSpy } = setup();
-    anchor.triggerEventHandler('click', new MouseEvent('click', { ctrlKey: true }));
+    anchor.triggerEventHandler(
+      'click',
+      new MouseEvent('click', { ctrlKey: true }),
+    );
     expect(openSpy).not.toHaveBeenCalled();
   });
 
   it('should not open the dialog when Meta+click', () => {
     const { anchor, openSpy } = setup();
-    anchor.triggerEventHandler('click', new MouseEvent('click', { metaKey: true }));
+    anchor.triggerEventHandler(
+      'click',
+      new MouseEvent('click', { metaKey: true }),
+    );
     expect(openSpy).not.toHaveBeenCalled();
   });
 

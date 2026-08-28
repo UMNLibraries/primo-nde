@@ -1,9 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import type { ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HathiTrustLinkComponent } from './hathi-trust-link.component';
 import { Component } from '@angular/core';
 
 const AVAILABILITY_TEXT = 'OMG HT!!!';
 
+// eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
 @Component({
   standalone: true,
   imports: [HathiTrustLinkComponent],

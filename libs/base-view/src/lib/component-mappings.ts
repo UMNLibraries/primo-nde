@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import type { Type } from '@angular/core';
 import { FilterRequestPickupLocationsComponent } from '@umn-nde/full-display';
 import { FilterCampusCollectionsComponent } from '@umn-nde/collection-discovery';
 import { HathiTrustComponent, ExcludeBeyondComponent } from '@umn-nde/search';

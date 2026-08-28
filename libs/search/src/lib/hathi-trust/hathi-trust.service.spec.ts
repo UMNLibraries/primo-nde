@@ -6,7 +6,7 @@ import { HathiTrustService } from './hathi-trust.service';
 import { HathiTrustApiService } from './hathi-trust-api/hathi-trust-api.service';
 import { HathiTrustConfigService } from './hathi-trust-config/hathi-trust-config.service';
 import { HathiTrustQuery } from './hathi-trust-api/hathi-trust-api.model';
-import { Doc } from './primo-search-result/search.model';
+import type { Doc } from './primo-search-result/search.model';
 
 type Mutable<T> = { -readonly [K in keyof T]: T[K] };
 

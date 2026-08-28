@@ -1,9 +1,7 @@
 import { Directive, inject, input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {
-  LibChatDialogComponent,
-  LibChatDialogData,
-} from './libchat-dialog/libchat-dialog.component';
+import type { LibChatDialogData } from './libchat-dialog/libchat-dialog.component';
+import { LibChatDialogComponent } from './libchat-dialog/libchat-dialog.component';
 
 @Directive({
   selector: 'a[umnLibChatLauncher]',

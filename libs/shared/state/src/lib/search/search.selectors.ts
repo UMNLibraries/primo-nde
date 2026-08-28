@@ -5,7 +5,7 @@ import {
   selectPcScopeIdsWithNoFullText,
   selectPrimoViewScopeIds,
 } from '../view-config/view-config.selectors';
-import { Search } from './search.types';
+import type { Search } from './search.types';
 
 export const selectSearch = createFeatureSelector<Search>('Search');
 

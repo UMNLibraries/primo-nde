@@ -1,7 +1,7 @@
 import { bootstrapRemoteApp as originalBootstrap } from '@vendor/custom-module';
 import { provideHttpClient } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { Router } from '@angular/router';
+import type { NgModule } from '@angular/core';
+import type { Router } from '@angular/router';
 
 interface BootstrapOptions {
   providers: NgModule['providers'];

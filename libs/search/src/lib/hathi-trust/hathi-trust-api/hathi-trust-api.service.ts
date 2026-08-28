@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable, map, shareReplay } from 'rxjs';
-import {
-  HathiTrustItemAvailability,
+import type { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs';
+import type {
   HathiTrustMultiIdResponse,
   HathiTrustQuery,
   HathiTrustResponse,
 } from './hathi-trust-api.model';
+import { HathiTrustItemAvailability } from './hathi-trust-api.model';
 import { HathiTrustConfigService } from '../hathi-trust-config/hathi-trust-config.service';
 
 const BASE_URL = 'https://catalog.hathitrust.org/api/volumes/brief/json/';

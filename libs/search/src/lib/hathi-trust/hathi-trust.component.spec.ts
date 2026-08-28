@@ -1,14 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { of, firstValueFrom } from 'rxjs';
-import {
-  HathiTrustComponent,
-  NdeOnlineAvailability,
-} from './hathi-trust.component';
+import type { NdeOnlineAvailability } from './hathi-trust.component';
+import { HathiTrustComponent } from './hathi-trust.component';
 import { HathiTrustService } from './hathi-trust.service';
 import { SearchResultFacade } from './primo-search-result/search-result.facade';
 import { TranslateService } from '@ngx-translate/core';
 import { vi } from 'vitest';
-import { Doc } from './primo-search-result/search.model';
+import type { Doc } from './primo-search-result/search.model';
 
 describe('HathiTrustComponent', () => {
   let component: HathiTrustComponent;

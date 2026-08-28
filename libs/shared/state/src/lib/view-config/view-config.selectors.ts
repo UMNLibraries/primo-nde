@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ViewConfig } from './view-config.types';
+import type { ViewConfig } from './view-config.types';
 
 export const selectViewConfig = createFeatureSelector<ViewConfig>('viewConfig');
 

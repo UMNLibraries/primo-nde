@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Router } from './router.types';
+import type { Router } from './router.types';
 
 export const selectRouter = createFeatureSelector<Router>('router');
 

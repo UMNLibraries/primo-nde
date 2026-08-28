@@ -5,10 +5,8 @@ import {
   inject,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import {
-  MatSlideToggleChange,
-  MatSlideToggleModule,
-} from '@angular/material/slide-toggle';
+import type { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { SearchFacade } from '@umn-nde/shared-state';

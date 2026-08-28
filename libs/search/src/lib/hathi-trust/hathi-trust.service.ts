@@ -1,10 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import {
-  HathiTrustQuery,
-  HathiTrustQueryId,
-} from './hathi-trust-api/hathi-trust-api.model';
-import { Doc } from './primo-search-result/search.model';
+import type { HathiTrustQueryId } from './hathi-trust-api/hathi-trust-api.model';
+import { HathiTrustQuery } from './hathi-trust-api/hathi-trust-api.model';
+import type { Doc } from './primo-search-result/search.model';
 import { HathiTrustConfigService } from './hathi-trust-config/hathi-trust-config.service';
 import { HathiTrustApiService } from './hathi-trust-api/hathi-trust-api.service';
 

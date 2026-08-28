@@ -1,4 +1,4 @@
-import { LoadingStatus } from '@vendor/custom-module';
+import type { LoadingStatus } from '@vendor/custom-module';
 
 export type stringBoolean = 'N' | 'Y';
 export interface SearchParams {

@@ -5,14 +5,9 @@ import {
   selectFullDisplayWithDelivery,
   selectSearchEntities,
 } from './search-result.selectors';
-import {
-  combineLatest,
-  distinctUntilChanged,
-  filter,
-  map,
-  Observable,
-} from 'rxjs';
-import { Doc } from './search.model';
+import type { Observable } from 'rxjs';
+import { combineLatest, distinctUntilChanged, filter, map } from 'rxjs';
+import type { Doc } from './search.model';
 
 @Injectable({
   providedIn: 'root',
