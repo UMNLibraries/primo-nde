@@ -79,6 +79,10 @@
             "caughtErrorsIgnorePattern": "^_"
           }
         ],
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          { "prefer": "type-imports" }
+        ],
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -94,13 +98,25 @@
             "prefix": ["umn", "custom"],
             "style": "camelCase"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-on-push-component-change-detection": "warn"
       }
     },
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nx/javascript"],
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@nx/angular-template",
+        "plugin:@angular-eslint/template/accessibility"
+      ],
+      "rules": {
+        "@angular-eslint/template/use-track-by-function": "warn",
+        "@angular-eslint/template/no-call-expression": "warn"
+      }
     }
   ]
 }
