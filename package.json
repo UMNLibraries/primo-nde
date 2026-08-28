@@ -2,7 +2,18 @@
   "name": "@umn-nde/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,js,html}": [
+      "eslint --fix",
+      "nx format:write --files"
+    ],
+    "*.{scss,css,json,md}": [
+      "nx format:write --files"
+    ]
+  },
   "private": true,
   "overrides": {
     "webpack": "5.94.0"
@@ -44,7 +55,9 @@
     "archiver": "^7.0.1",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "10.1.8",
+    "husky": "^9.1.7",
     "jsdom": "~22.1.0",
+    "lint-staged": "^17.3.0",
     "nx": "22.2.0",
     "prettier": "^3.9.5",
     "stylelint": "^17.14.1",
