@@ -4,7 +4,9 @@
       <mat-card-title
         id="digital-delivery-card-header"
         class="margin-bottom-big"
-        >{{ 'Digital Delivery' + headerCount(articles) }}</mat-card-title
+        >{{
+          'Digital Delivery' + (articles | formatHeaderCount)
+        }}</mat-card-title
       >
     </mat-card-header>
     @if (articles.length > 0) {

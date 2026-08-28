@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AsyncPipe, SlicePipe } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { IlliadService } from '../illiad.service';
-import { NormalizedIllTransaction } from '../illiad.types';
+import { FormatHeaderCountPipe } from '../format-header-count.pipe';
 import { articlePageUrl } from '../illiad-url.utils';
+import { IlliadService } from '../illiad.service';
 
 @Component({
   standalone: true,
@@ -17,6 +17,7 @@ import { articlePageUrl } from '../illiad-url.utils';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    FormatHeaderCountPipe,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -24,9 +25,4 @@ export class DigitalDeliveryComponent {
   private illiadService = inject(IlliadService);
   allArticlesUrl = articlePageUrl();
   articles$ = this.illiadService.getArticles();
-
-  headerCount(articles: NormalizedIllTransaction[]): string {
-    const count = articles.length;
-    return count === 0 ? '' : ` (${count})`;
-  }
 }

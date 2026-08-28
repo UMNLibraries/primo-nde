@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AsyncPipe, SlicePipe } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { IlliadService } from '../illiad.service';
-import { NormalizedIllTransaction } from '../illiad.types';
+import { FormatHeaderCountPipe } from '../format-header-count.pipe';
 import { requestPageUrl } from '../illiad-url.utils';
+import { IlliadService } from '../illiad.service';
 
 @Component({
   standalone: true,
@@ -17,6 +17,7 @@ import { requestPageUrl } from '../illiad-url.utils';
     MatIconModule,
     AsyncPipe,
     SlicePipe,
+    FormatHeaderCountPipe,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -24,11 +25,6 @@ export class IllRequestsComponent {
   private illiadService = inject(IlliadService);
   allRequestsUrl = requestPageUrl();
   requests$ = this.illiadService.getRequests();
-
-  headerCount(requests: NormalizedIllTransaction[]): string {
-    const count = requests.length;
-    return count === 0 ? '' : ` (${count})`;
-  }
 }
 
 // TODO: add loading animation?
