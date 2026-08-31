@@ -39,6 +39,7 @@ export const createNodes: CreateNodesV2 = [
                 package: {
                   executor: 'nx:run-commands',
                   dependsOn: ['build'],
+                  cache: true,
                   options: {
                     command: `node tools/scripts/zip-dist.mjs "${outputPath}" "${zipFilePath}"`,
                     parallel: false,

@@ -1,5 +1,5 @@
 ---
-applyTo: "**/*.spec.ts"
+applyTo: '**/*.spec.ts'
 ---
 
 # Unit Testing Guidelines

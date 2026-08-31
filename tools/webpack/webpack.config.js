@@ -43,8 +43,8 @@ module.exports = (config, context) => {
     sideEffects: false,
   });
 
-  //console.dir(config, { depth: null });
-  //console.dir(context, { depth: null });
+  // console.dir(config, { depth: null });
+  // console.dir(context, { depth: null });
 
   return merge(config, mfConfig);
 };
