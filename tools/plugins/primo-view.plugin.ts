@@ -36,9 +36,16 @@ export const createNodes: CreateNodesV2 = [
                     ],
                   },
                 },
-                package: {
+                ['minify-json']: {
                   executor: 'nx:run-commands',
                   dependsOn: ['build'],
+                  options: {
+                    command: `node tools/scripts/minify-json.mjs "${outputPath}/assets"`,
+                  },
+                },
+                package: {
+                  executor: 'nx:run-commands',
+                  dependsOn: ['minify-json'],
                   cache: true,
                   options: {
                     command: `node tools/scripts/zip-dist.mjs "${outputPath}" "${zipFilePath}"`,

@@ -5,7 +5,7 @@ import archiver from 'archiver';
 const [, , sourcePath, targetPath] = process.argv;
 
 if (!sourcePath || !targetPath) {
-  console.error('Usage: node zip-dist.mjs <sourceDir> <targetPath>');
+  console.error('[zip-dist] Usage: node zip-dist.mjs <sourceDir> <targetPath>');
   process.exit(1);
 }
 
@@ -17,7 +17,7 @@ const archive = archiver('zip', { zlib: { level: 9 } });
 
 output.on('close', () =>
   console.log(
-    `Successfully zipped ${archive.pointer()} total bytes to ${targetPath}`,
+    `[zip-dist] Successfully zipped ${archive.pointer()} total bytes to ${targetPath}`,
   ),
 );
 archive.on('error', (err) => {
