@@ -1,4 +1,14 @@
 <mat-dialog-content class="chat-content">
+  <div class="chat-header">
+    <button
+      mat-icon-button
+      mat-dialog-close
+      aria-label="Close chat"
+      matTooltip="Close chat"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
   <iframe
     [src]="url"
     title="Chat with a librarian"
@@ -7,6 +17,3 @@
     height="100%"
   ></iframe>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Close chat</button>
-</mat-dialog-actions>

@@ -48,6 +48,6 @@ describe('LibChatDialogComponent', () => {
     const { fixture } = setup();
     const button = fixture.debugElement.query(By.css('[mat-dialog-close]'));
     expect(button).toBeTruthy();
-    expect(button.nativeElement.textContent.trim()).toBe('Close chat');
+    expect(button.nativeElement.getAttribute('aria-label')).toBe('Close chat');
   });
 });
