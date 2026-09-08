@@ -1,0 +1,20 @@
+{
+  "name": "hathi-trust",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/search/hathi-trust/src",
+  "prefix": "umn",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:search"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/search/hathi-trust"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

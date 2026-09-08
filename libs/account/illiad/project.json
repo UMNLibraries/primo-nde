@@ -1,0 +1,20 @@
+{
+  "name": "illiad",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/account/illiad/src",
+  "prefix": "umn",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:account"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/account/illiad"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

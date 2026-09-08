@@ -1,0 +1,20 @@
+{
+  "name": "filter-campus-collections",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/collection-discovery/filter-campus-collections/src",
+  "prefix": "umn",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:collection-discovery"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/collection-discovery/filter-campus-collections"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

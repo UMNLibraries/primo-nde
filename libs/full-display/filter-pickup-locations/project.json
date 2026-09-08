@@ -1,0 +1,20 @@
+{
+  "name": "filter-pickup-locations",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/full-display/filter-pickup-locations/src",
+  "prefix": "umn",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:full-display"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/full-display/filter-pickup-locations"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

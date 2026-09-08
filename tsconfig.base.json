@@ -17,14 +17,22 @@
     "paths": {
       "@vendor/custom-module": ["libs/vendor/custom-module/index.ts"],
       "@umn-nde/base-view": ["libs/base-view/src/index.ts"],
-      "@umn-nde/collection-discovery": [
-        "libs/collection-discovery/src/index.ts"
-      ],
-      "@umn-nde/full-display": ["libs/full-display/src/index.ts"],
-      "@umn-nde/account": ["libs/account/src/index.ts"],
       "@umn-nde/shared-state": ["libs/shared/state/src/index.ts"],
-      "@umn-nde/search": ["libs/search/src/index.ts"],
-      "@umn-nde/libchat": ["libs/shared/feature/libchat/src/index.ts"]
+      "@umn-nde/libchat": ["libs/shared/feature/libchat/src/index.ts"],
+      "@umn-nde/illiad": ["libs/account/illiad/src/index.ts"],
+      "@umn-nde/filter-campus-collections": [
+        "libs/collection-discovery/filter-campus-collections/src/index.ts"
+      ],
+      "@umn-nde/problem-report-link": [
+        "libs/shared/feature/problem-report-link/src/index.ts"
+      ],
+      "@umn-nde/filter-pickup-locations": [
+        "libs/full-display/filter-pickup-locations/src/index.ts"
+      ],
+      "@umn-nde/exclude-beyond-filter": [
+        "libs/search/exclude-beyond-filter/src/index.ts"
+      ],
+      "@umn-nde/hathi-truse": ["libs/search/hathi-trust/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

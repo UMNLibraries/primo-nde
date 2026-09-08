@@ -1,0 +1,20 @@
+{
+  "name": "exclude-beyond-filter",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/search/exclude-beyond-filter/src",
+  "prefix": "umn",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:search"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../coverage/libs/search/exclude-beyond-filter"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

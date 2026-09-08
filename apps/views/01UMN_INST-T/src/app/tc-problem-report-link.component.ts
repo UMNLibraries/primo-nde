@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProblemReportLinkComponent } from '@umn-nde/full-display';
+import { ProblemReportLinkComponent } from '@umn-nde/problem-report-link';
 
 @Component({
   standalone: true,

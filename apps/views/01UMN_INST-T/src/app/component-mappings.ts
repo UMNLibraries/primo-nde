@@ -3,7 +3,7 @@ import { TwinCitiesProblemReportLinkComponent } from './tc-problem-report-link.c
 import {
   IllRequestsComponent,
   DigitalDeliveryComponent,
-} from '@umn-nde/account';
+} from '@umn-nde/illiad';
 import { FooterComponent } from './footer/footer.component';
 
 /**
