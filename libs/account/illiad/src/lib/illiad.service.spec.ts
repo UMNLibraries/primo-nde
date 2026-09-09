@@ -84,6 +84,16 @@ describe('IlliadService', () => {
         }),
       ]);
     });
+
+    it('returns an empty array on error', async () => {
+      const { service, httpController } = setup();
+      const promise = firstValueFrom(service.getRequests());
+      httpController
+        .expectOne(`${PRODUCTION_BASE_URL}/requests`)
+        .flush('Error', { status: 500, statusText: 'Internal Server Error' });
+      const result = await promise;
+      expect(result).toEqual([]);
+    });
   });
 
   describe('getArticles()', () => {
@@ -131,6 +141,16 @@ describe('IlliadService', () => {
           author: 'Author B',
         }),
       ]);
+    });
+
+    it('returns an empty array on error', async () => {
+      const { service, httpController } = setup();
+      const promise = firstValueFrom(service.getArticles());
+      httpController
+        .expectOne(`${PRODUCTION_BASE_URL}/articles`)
+        .flush('Error', { status: 500, statusText: 'Internal Server Error' });
+      const result = await promise;
+      expect(result).toEqual([]);
     });
   });
 });

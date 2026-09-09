@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { UserFacade } from '@umn-nde/shared-state';
 import { ViewConfigFacade } from '@umn-nde/shared-state';
 import type { Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 import type {
   IlliadApiResponse,
   NormalizedIllTransaction,
@@ -38,6 +38,11 @@ export class IlliadService {
 
   private get(url: string) {
     const headers = { Authorization: `Bearer ${this.userFacade.jwt()}` };
-    return this.http.get<IlliadApiResponse>(url, { headers });
+    return this.http.get<IlliadApiResponse>(url, { headers }).pipe(
+      catchError((error) => {
+        console.error('ILLiad request error: ', error);
+        return of([]);
+      }),
+    );
   }
 }
