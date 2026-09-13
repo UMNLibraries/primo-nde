@@ -17,6 +17,7 @@
   },
   "plugins": [
     "./tools/plugins/primo-view.plugin.ts",
+    "./tools/plugins/primo-addon.plugin.ts",
     "./tools/plugins/stylelint-plugin.ts",
     {
       "plugin": "@nx/webpack/plugin",
@@ -53,9 +54,6 @@
             "inject": false
           }
         ],
-        "stylePreprocessorOptions": {
-          "includePaths": ["libs/base-view/src/styles"]
-        },
         "scripts": []
       },
       "configurations": {
@@ -128,8 +126,7 @@
       "style": "scss",
       "unitTestRunner": "none",
       "routing": false,
-      "bundler": "webpack",
-      "prefix": "umn"
+      "bundler": "webpack"
     },
     "@nx/angular:library": {
       "linter": "eslint",
@@ -138,8 +135,7 @@
       "flat": true,
       "skipTests": true,
       "style": "none",
-      "inlineTemplate": true,
-      "prefix": "umn"
+      "inlineTemplate": true
     },
     "@nx/angular:component": {
       "style": "scss",

@@ -10,12 +10,14 @@ module.exports = (config, context) => {
   // can set/override custom config here (context is the nx ExecutorContext)
 
   const projectRoot = path.dirname(context.tsConfig);
+  const mfName = process.env.ADDON_NAME ?? 'customModule';
+  const mfExposesKey = `./${process.env.ADDON_NAME ?? 'custom-module'}`;
 
   const mfConfig = withModuleFederationPlugin({
-    name: 'customModule',
+    name: mfName,
     filename: 'remoteEntry.js',
     exposes: {
-      './custom-module': `${projectRoot}/src/bootstrap.ts`,
+      [mfExposesKey]: `${projectRoot}/src/bootstrap.ts`,
     },
     shared: share({
       rxjs: { requiredVersion: 'auto' },

@@ -18,8 +18,12 @@ export const createNodes: CreateNodesV2 = [
               targets: {
                 build: {
                   options: {
+                    index: '',
                     customWebpackConfig: {
                       path: 'tools/webpack/webpack.config.js',
+                    },
+                    stylePreprocessorOptions: {
+                      includePaths: ['libs/base-view/src/styles'],
                     },
                     assets: [
                       // views inherit assets from the base-view
