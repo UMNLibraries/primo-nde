@@ -83,7 +83,7 @@ jobs:
               return `* **${name}**: [${url}](${url})`;
             });
 
-            const body = `### 🚀 Affected Add-on Previews Ready\n\n` + urls.join('\n');
+            const body = `### 🚀 Affected Add-on Previews\n\n` + urls.join('\n');
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
