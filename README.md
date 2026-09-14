@@ -35,6 +35,10 @@ Run `npx nx run-many -t package` to build customization packages for all views. 
 
 Alternatively, you could run `npx nx affected -t package` which will only re-create packages for views that have changed.
 
+### Deploying NDE add-ons
+
+Add-on deployment should be handled automatically by GitHub actions, but you can run add-on deployments locally with `npx nx run-many -t deploy` or `npx nx affected -t deploy`.
+
 ## Testing
 
 ### Running unit tests (Vitest)
@@ -54,6 +58,17 @@ Run `npx nx run-many -t lint` to lint all projects or `npx nx affected -t lint` 
 ### View projects
 
 The `apps/views/*` projects contains the component mappings, styles, and assets for each campus view. In addition to view-specific customizations, the view projects inherit common component mappings, styles, and assets from the `libs/base-view` project. To understand how views are built, refer to `tools/plugins/primo-view.plugin.ts` and `tools/webpack/webpack.config.js`.
+
+### Add-on projects
+
+The `apps/addons/*` projects contain component mappings for [Primo add-ons](<https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/120Other_Configurations/Managing_Add-Ons_for_the_NDE_UI>). To understand how add-ons are built, refer to `tools/plugins/primo-addon.plugin.ts` and `tools/webpack/config.js`.
+
+Each add-on project should have an `{projectRoot}/.env.build` file that defines a unique `ADDON_NAME` environment variable, which is used to define the module federation remote name. This file will get sourced automatically at build time.
+
+In addition, for add-ons that are deployed to Cloudflare Pages, projects should have a `{projectRoot/public/}` directory with the following files:
+
+- a `_headers` file with appropriate CORS headers
+- a `_redirects` file or an `index.html` to ensure that `/` requests don't 404. This is only needed to appease the add-on configuration wizard in Primo/Alma.
 
 ### Vendor project
 
