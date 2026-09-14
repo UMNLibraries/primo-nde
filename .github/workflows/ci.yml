@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  workflow_call:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,23 +15,32 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      actions: read
+      actions: write
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           filter: tree:0
           fetch-depth: 0
 
-      # Cache node_modules
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Restore/Save Nx Local Cache
+        uses: actions/cache@v4
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-
 
       - name: Derive SHA values for nx affected commands
         if: ${{ !env.ACT }}
@@ -43,28 +52,23 @@ jobs:
           echo "NX_BASE=HEAD~1" >> $GITHUB_ENV
           echo "NX_HEAD=HEAD" >> $GITHUB_ENV
 
-      - name: Lint
+      - name: Lint Affected
         run: npx nx affected -t lint
 
-      - name: Test
+      - name: Test Affected
         run: npx nx affected -t test
 
-      - name: Build
+      - name: Build Affected
         run: npx nx affected -t build
 
-      - name: Create affected view packages (PR)
-        if: github.event_name == 'pull_request'
-        run: npx nx affected --target=package --projects=tag:app-view --configuration=production
-
-      - name: Create affected view packages (Main merge)
-        if: github.event_name == 'push'
-        run: npx nx run-many --target=package --projects=tag:app-view --configuration=production
+      - name: Create Affected View Packages
+        run: npx nx affected --target=package --projects="apps/views/*" --configuration=production
 
       - name: Upload view packages
         if: ${{ !env.ACT }}
         uses: actions/upload-artifact@v4
         with:
-          name: primo-view-zips-${{ github.sha }}
+          name: primo-view-packages-${{ github.sha }}
           path: dist/packages/**/*.zip
           retention-days: 7
           if-no-files-found: ignore

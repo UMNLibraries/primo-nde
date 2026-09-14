@@ -25,8 +25,12 @@
                 "notDependOnLibsWithTags": ["type:app"]
               },
               {
-                "sourceTag": "/^scope:(view|addon)/",
-                "onlyDependOnLibsWithTags": ["scope:*"]
+                "sourceTag": "scope:addon",
+                "notDependOnLibsWithTags": ["scope:view"]
+              },
+              {
+                "sourceTag": "scope:view",
+                "notDependOnLibsWithTags": ["scope:addon"]
               },
               {
                 "sourceTag": "scope:shared",
