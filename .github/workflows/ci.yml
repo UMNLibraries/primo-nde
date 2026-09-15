@@ -62,7 +62,7 @@ jobs:
         run: npx nx affected -t build
 
       - name: Create Affected View Packages
-        run: npx nx affected --target=package --projects="apps/views/*" --configuration=production
+        run: npx nx affected --t package --configuration=production
 
       - name: Upload view packages
         if: ${{ !env.ACT }}
