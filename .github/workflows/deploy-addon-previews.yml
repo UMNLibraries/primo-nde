@@ -55,7 +55,7 @@ jobs:
       - name: Deploy Affected Addon Previews
         if: ${{ steps.affected.outputs.projects != '[]' && steps.affected.outputs.projects != '' }}
         run: |
-          npx nx affected --target=deploy --projects="apps/addons/*" -- --branch="${{ github.head_ref }}"
+          npx nx affected --target=deploy -- --branch="${{ github.head_ref }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -25,7 +25,7 @@ To override the default proxy target, set a `PROXY_TARGET` environment variable 
 
 ### Add-ons
 
-TBD
+You can preview an add-on in any Primo view using the local development server proxy (as long the `vid` parameter in the URL corresponds with an existing Primo view in the `PROXY_TARGET`). Run `npx nx serve {project-name}` to start the server, and then navigate to `http://localhost:4201/nde/home?vid={any_view}` in a browser. To get a list of add-on projects, run `npx nx show projects --projects="apps/addons/*"`.
 
 ## Deployment
 

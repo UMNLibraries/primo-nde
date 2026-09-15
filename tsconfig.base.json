@@ -32,7 +32,7 @@
       "@umn-nde/exclude-beyond-filter": [
         "libs/search/exclude-beyond-filter/src/index.ts"
       ],
-      "@umn-nde/hathi-truse": ["libs/search/hathi-trust/src/index.ts"]
+      "@umn-nde/hathi-trust": ["libs/search/hathi-trust/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
