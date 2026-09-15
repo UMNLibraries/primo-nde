@@ -1,5 +1,5 @@
 import type { Type } from '@angular/core';
-import { HathiTrustComponent } from '@umn-nde/hathi-truse';
+import { HathiTrustComponent } from '@umn-nde/hathi-trust';
 
 type NdeSelector = `nde-${string}`;
 
