@@ -2,9 +2,28 @@ const {
   share,
   withModuleFederationPlugin,
 } = require('@angular-architects/module-federation/webpack');
-const path = require('path');
 const { merge } = require('webpack-merge');
 const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
+const JSON5 = require('json5');
+
+// Libs that must NOT be auto-shared (each remote gets its own copy).
+const EXCLUDED_FROM_SHARING = new Set([
+  '@vendor/custom-module', // avoids issues with component-mappings replacement
+]);
+
+// Normally the withModuleFederationPlugin() helper will auto-share all libs in
+// the workspace, but we want to exclude some libs (see EXCLUDED_FROM_SHARING).
+// This is a workaround for an issue with the NormalModuleReplacementPlugin.
+function getWorkspaceSharedMappings() {
+  const tsconfigPath = path.resolve(__dirname, '../../tsconfig.base.json');
+  const tsconfig = JSON5.parse(fs.readFileSync(tsconfigPath, 'utf-8'));
+  const paths = tsconfig.compilerOptions?.paths ?? {};
+  return Object.keys(paths).filter(
+    (key) => !key.includes('*') && !EXCLUDED_FROM_SHARING.has(key),
+  );
+}
 
 module.exports = (config, context) => {
   // can set/override custom config here (context is the nx ExecutorContext)
@@ -19,6 +38,7 @@ module.exports = (config, context) => {
     exposes: {
       [mfExposesKey]: `${projectRoot}/src/bootstrap.ts`,
     },
+    sharedMappings: getWorkspaceSharedMappings(),
     shared: share({
       rxjs: { requiredVersion: 'auto' },
       '@angular/core': { requiredVersion: 'auto' },
@@ -31,7 +51,7 @@ module.exports = (config, context) => {
     }),
   });
 
-  // replace vendor component mappings with local mappings module
+  // Replace vendor component mappings with local mappings module.
   config.plugins.push(
     new webpack.NormalModuleReplacementPlugin(
       /custom1-module\/customComponentMappings/,
@@ -39,7 +59,7 @@ module.exports = (config, context) => {
     ),
   );
 
-  // declare shared-state lib as side-effect free (tree shaking optimization)
+  // Declare shared-state lib as side-effect free (tree shaking optimization)
   config.module.rules.push({
     include: [/libs\/shared\/state/],
     sideEffects: false,
