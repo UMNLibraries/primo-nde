@@ -1,76 +1,48 @@
 import { Inject, Injectable } from '@angular/core';
-
-type booleanOption = boolean | 'true' | 'false';
-
-interface HathiTrustModuleParameters {
-  disableWhenAvailableOnline: booleanOption;
-  disableForJournals: booleanOption;
-  ignoreCopyright: booleanOption;
-  matchOn: {
-    oclc: booleanOption;
-    isbn: booleanOption;
-    issn: booleanOption;
-    lccn: booleanOption;
-  };
-}
+import type {
+  HathiTrustOptions,
+  HathiTrustModuleParameters,
+} from './hathi-trust-config.types';
+import { normalizeHathiTrustConfig } from './hathi-trust-config.util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HathiTrustConfigService {
+  private readonly options: HathiTrustOptions;
+
   constructor(
     @Inject('MODULE_PARAMETERS')
-    private moduleParameters: HathiTrustModuleParameters,
+    moduleParameters: HathiTrustModuleParameters,
   ) {
-    console.debug(
-      'HathiTrustConfigService initialized with parameters: ',
-      moduleParameters,
-    );
+    this.options = normalizeHathiTrustConfig(moduleParameters);
   }
 
   get disableWhenAvailableOnline(): boolean {
-    return this.parseBooleanOption(
-      this.moduleParameters.disableWhenAvailableOnline,
-      true,
-    );
+    return this.options.disableWhenAvailableOnline ?? true;
   }
 
   get disableForJournals(): boolean {
-    return this.parseBooleanOption(
-      this.moduleParameters.disableForJournals,
-      false,
-    );
+    return this.options.disableForJournals ?? false;
   }
 
   get ignoreCopyright(): boolean {
-    return this.parseBooleanOption(
-      this.moduleParameters.ignoreCopyright,
-      false,
-    );
+    return this.options.ignoreCopyright ?? false;
   }
 
   get matchOnOclc(): boolean {
-    return this.parseBooleanOption(this.moduleParameters.matchOn?.oclc, true);
+    return this.options.matchOn?.oclc ?? true;
   }
 
   get matchOnIsbn(): boolean {
-    return this.parseBooleanOption(this.moduleParameters.matchOn?.isbn, false);
+    return this.options.matchOn?.isbn ?? false;
   }
 
   get matchOnIssn(): boolean {
-    return this.parseBooleanOption(this.moduleParameters.matchOn?.issn, false);
+    return this.options.matchOn?.issn ?? false;
   }
 
   get matchOnLccn(): boolean {
-    return this.parseBooleanOption(this.moduleParameters.matchOn?.lccn, false);
-  }
-
-  private parseBooleanOption(
-    value: booleanOption,
-    defaultValue: boolean,
-  ): boolean {
-    if (value === undefined || value === null) return defaultValue;
-    if (typeof value === 'boolean') return value;
-    return value === 'true';
+    return this.options.matchOn?.lccn ?? false;
   }
 }
