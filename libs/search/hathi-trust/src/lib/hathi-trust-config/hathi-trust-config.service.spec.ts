@@ -68,4 +68,55 @@ describe('HathiTrustConfigService', () => {
     expect(service.matchOnIssn).toBeFalsy(); // default false when missing
     expect(service.matchOnLccn).toBeFalsy(); // default false when missing
   });
+
+  it('handles boolean values provided as strings', () => {
+    TestBed.configureTestingModule({
+      providers: [
+        HathiTrustConfigService,
+        {
+          provide: TOKEN,
+          useValue: {
+            disableWhenAvailableOnline: 'false',
+            disableForJournals: 'true',
+            ignoreCopyright: 'true',
+            matchOn: {
+              oclc: 'false',
+              isbn: 'true',
+              issn: 'true',
+              lccn: 'true',
+            },
+          },
+        },
+      ],
+    });
+
+    const service = TestBed.inject(HathiTrustConfigService);
+    expect(service.disableWhenAvailableOnline).toBeFalsy();
+    expect(service.disableForJournals).toBeTruthy();
+    expect(service.ignoreCopyright).toBeTruthy();
+    expect(service.matchOnOclc).toBeFalsy();
+    expect(service.matchOnIsbn).toBeTruthy();
+    expect(service.matchOnIssn).toBeTruthy();
+    expect(service.matchOnLccn).toBeTruthy();
+  });
+
+  it('handles weird flattened matchOn values', () => {
+    TestBed.configureTestingModule({
+      providers: [
+        HathiTrustConfigService,
+        {
+          provide: TOKEN,
+          useValue: {
+            matchOn: '{oclc=false, isbn=true, issn=true, lccn=true}',
+          },
+        },
+      ],
+    });
+
+    const service = TestBed.inject(HathiTrustConfigService);
+    expect(service.matchOnOclc).toBeFalsy();
+    expect(service.matchOnIsbn).toBeTruthy();
+    expect(service.matchOnIssn).toBeTruthy();
+    expect(service.matchOnLccn).toBeTruthy();
+  });
 });

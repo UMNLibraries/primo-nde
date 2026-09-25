@@ -1,51 +1,48 @@
 import { Inject, Injectable } from '@angular/core';
-
-interface HathiTrustModuleParameters {
-  disableWhenAvailableOnline: boolean;
-  disableForJournals: boolean;
-  ignoreCopyright: boolean;
-  matchOn: {
-    oclc: boolean;
-    isbn: boolean;
-    issn: boolean;
-    lccn: boolean;
-  };
-}
+import type {
+  HathiTrustOptions,
+  HathiTrustModuleParameters,
+} from './hathi-trust-config.types';
+import { normalizeHathiTrustConfig } from './hathi-trust-config.util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HathiTrustConfigService {
+  private readonly options: HathiTrustOptions;
+
   constructor(
     @Inject('MODULE_PARAMETERS')
-    private moduleParameters: HathiTrustModuleParameters,
-  ) {}
+    moduleParameters: HathiTrustModuleParameters,
+  ) {
+    this.options = normalizeHathiTrustConfig(moduleParameters);
+  }
 
   get disableWhenAvailableOnline(): boolean {
-    return this.moduleParameters.disableWhenAvailableOnline ?? true;
+    return this.options.disableWhenAvailableOnline ?? true;
   }
 
   get disableForJournals(): boolean {
-    return this.moduleParameters.disableForJournals ?? false;
+    return this.options.disableForJournals ?? false;
   }
 
   get ignoreCopyright(): boolean {
-    return this.moduleParameters.ignoreCopyright ?? false;
+    return this.options.ignoreCopyright ?? false;
   }
 
   get matchOnOclc(): boolean {
-    return this.moduleParameters.matchOn?.oclc ?? true;
+    return this.options.matchOn?.oclc ?? true;
   }
 
   get matchOnIsbn(): boolean {
-    return this.moduleParameters.matchOn?.isbn ?? false;
+    return this.options.matchOn?.isbn ?? false;
   }
 
   get matchOnIssn(): boolean {
-    return this.moduleParameters.matchOn?.issn ?? false;
+    return this.options.matchOn?.issn ?? false;
   }
 
   get matchOnLccn(): boolean {
-    return this.moduleParameters.matchOn?.lccn ?? false;
+    return this.options.matchOn?.lccn ?? false;
   }
 }
