@@ -47,3 +47,6 @@ vitest.config.*.timestamp*
 .nx/polygraph
 .claude/worktrees
 .claude/settings.local.json
+
+# Cloudflare Wrangler local state, build output, and temp files
+.wrangler/

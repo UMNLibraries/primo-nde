@@ -13,6 +13,7 @@ export const createNodes: CreateNodesV2 = [
             [projectRoot]: {
               targets: {
                 build: {
+                  dependsOn: ['typegen'],
                   options: {
                     customWebpackConfig: {
                       path: 'tools/webpack/webpack.config.js',
@@ -32,8 +33,17 @@ export const createNodes: CreateNodesV2 = [
                 },
                 deploy: {
                   dependsOn: ['build'],
-                  command:
-                    'wrangler pages deploy dist/{projectRoot} --project-name=primo-nde-{projectName}',
+                  executor: 'nx:run-commands',
+                  options: {
+                    command: 'wrangler pages deploy --cwd={projectRoot}',
+                  },
+                },
+                typegen: {
+                  executor: 'nx:run-commands',
+                  options: {
+                    cwd: '{projectRoot}',
+                    command: 'wrangler types --env-interface Env',
+                  },
                 },
               },
             },

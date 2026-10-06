@@ -1,0 +1,8 @@
+name = "primo-nde-hathi-trust-addon"
+compatibility_date = "2026-09-11"
+pages_build_output_dir = "../../../dist/apps/addons/hathi-trust"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "host-telemetry"
+database_id = "0b03914e-781a-4183-a90a-6f7009721e5a"

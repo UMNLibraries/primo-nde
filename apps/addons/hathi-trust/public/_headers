@@ -1,15 +1,14 @@
-# CORS & preflight for all assets
-/*
+# Allow CORS on all js files
+# 30 day cache for hashed js chunks
+/*.js
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: GET, HEAD, OPTIONS
   Access-Control-Allow-Headers: *
-  Access-Control-Max-Age: 86400
-
-# 30 day cache for hashed js chunks
-/*.js
   Cache-Control: public, max-age=2592000, immutable
 
-# cache override for remoteEntry.js
+# Don't cache the main module federation remoteEntry.js file
+# Note: this will match the above rule too, so be sure to use `!` to override
 /remoteEntry.js
+  Access-Control-Max-Age: 86400
   ! Cache-Control
   Cache-Control: no-cache, no-store, must-revalidate
