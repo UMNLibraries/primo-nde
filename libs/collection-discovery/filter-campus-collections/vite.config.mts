@@ -6,7 +6,7 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 export default defineConfig(() => ({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/libs/collection-discovery',
+  cacheDir: '../../../node_modules/.vite/libs/collection-discovery',
   plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   // Uncomment this if you are using workers.
   // worker: {
