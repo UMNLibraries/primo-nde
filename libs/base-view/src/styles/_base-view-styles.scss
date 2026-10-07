@@ -128,3 +128,15 @@ nde-report-a-problem {
 .main-landing-page .welcome-announcements-container .welcome a:hover {
   background-color: var(--sys-primary) !important;
 }
+
+// hide the "part of course" indicator in brief results
+div.record-indication-cont:has(
+    mat-icon[data-mat-icon-name='Course-Indicator']
+  ) {
+  display: none;
+}
+
+// hide the citation trail links in the brief results
+.brief-result-container > nde-record-citations-and-times-cited {
+  display: none;
+}
