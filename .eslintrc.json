@@ -15,24 +15,39 @@
               {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": [
-                  "type:core",
+                  "type:base-app",
                   "type:feature",
                   "type:ui",
                   "type:util"
                 ]
               },
               {
-                "sourceTag": "type:core",
+                "sourceTag": "type:base-app",
                 "onlyDependOnLibsWithTags": [
-                  "type:core",
                   "type:feature",
                   "type:ui",
-                  "type: util"
+                  "type:util"
                 ]
               },
               {
                 "sourceTag": "type:feature",
-                "notDependOnLibsWithTags": ["type:app"]
+                "onlyDependOnLibsWithTags": [
+                  "type:state",
+                  "type:ui",
+                  "type:util"
+                ]
+              },
+              {
+                "sourceTag": "type:state",
+                "onlyDependOnLibsWithTags": ["type:state", "type:util"]
+              },
+              {
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": ["type:ui", "type:util"]
+              },
+              {
+                "sourceTag": "type:util",
+                "onlyDependOnLibsWithTags": ["type:util"]
               },
               {
                 "sourceTag": "scope:addon",
