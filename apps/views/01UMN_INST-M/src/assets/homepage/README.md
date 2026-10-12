@@ -1,8 +1,4 @@
-# The Primo New UI Customization Workflow Development Environment
+##Homepage
 
-##html documentation
-
-- In this folder you will find static html files in their OTB state
-- You can edit the html to comply with your library requirements
-- Note that you can use Angular Material directives in your html:
-  > https://material.angularjs.org/latest/
+The homepage folder includes the following template files that you can use for editing the content and style of your landing page
+You can find more details [Customizing Landing Page](<https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/020Primo_VE/Primo_VE_(English)/030Primo_VE_User_Interface/010NDE_UI_Customization_-_Best_Practices#Customizing_the_Landing_Page>)
