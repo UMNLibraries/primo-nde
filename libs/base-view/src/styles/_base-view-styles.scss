@@ -140,3 +140,8 @@ div.record-indication-cont:has(
 .brief-result-container > nde-record-citations-and-times-cited {
   display: none;
 }
+
+// hide the "your discovery begins here" banner on the home page
+.top-bar-background-image h1 {
+  display: none;
+}
