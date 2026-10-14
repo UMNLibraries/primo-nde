@@ -1,0 +1,19 @@
+.about-text {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  & > p {
+    padding: 0;
+    margin-bottom: -1rem;
+  }
+
+  & > ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+  }
+}
+
+.main-landing-page .about .about-content .about-image img {
+  width: 100%;
+}
