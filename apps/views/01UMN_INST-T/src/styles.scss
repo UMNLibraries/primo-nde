@@ -1,5 +1,23 @@
 @use 'base-view-styles';
 
+nde-logo {
+  img {
+    width: min(50vw, 300px);
+    height: auto;
+  }
+}
+
+.main-menu-container {
+  justify-content: center;
+
+  // weird hack to hide the trailing divider when the "more" button isn't present
+  .main-menu-list
+    > li:nth-last-child(2):has(+ li:last-child:empty)
+    mat-divider {
+    display: none !important;
+  }
+}
+
 // accommodate custom ILLiad tiles in account overview page
 nde-requests-overview,
 nde-loans-overview {
