@@ -8,6 +8,7 @@ nde-logo {
 }
 
 .main-menu-container {
+  // padding-inline-start: 1.5rem;
   justify-content: center;
 
   // weird hack to hide the trailing divider when the "more" button isn't present
@@ -16,6 +17,12 @@ nde-logo {
     mat-divider {
     display: none !important;
   }
+}
+
+// hide the "blank ILL" Rapido banner
+// stylelint-disable-next-line selector-class-pattern
+nde-rapido-links:has(.nde-rapido-links-blankIll) {
+  display: none;
 }
 
 // accommodate custom ILLiad tiles in account overview page
