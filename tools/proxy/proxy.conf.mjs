@@ -1,4 +1,6 @@
 import fs from 'node:fs';
+import { basename } from 'path';
+import { readCachedProjectGraph } from '@nx/devkit';
 import { PROXY_TARGET } from '../../libs/vendor/custom-module/proxy/proxy.const.mjs';
 import {
   deepMerge,
@@ -10,6 +12,16 @@ import {
   getAssetContentType,
   resolveLocalAssetFilePath,
 } from './assets.mjs';
+
+function getVid() {
+  const projectName = process.env.NX_TASK_TARGET_PROJECT;
+  if (!projectName)
+    throw new Error('NX_TASK_TARGET_PROJECT environment variable is not set.');
+
+  const projectGraph = readCachedProjectGraph();
+  const projectRoot = projectGraph.nodes[projectName]?.data?.root ?? '';
+  return basename(projectRoot).replace('-', ':');
+}
 
 function isManifestRule(rule) {
   const contexts = Array.isArray(rule.context) ? rule.context : [rule.context];
@@ -32,6 +44,21 @@ const vendorRulesWithoutOverrides = vendorProxyRules.filter(
 );
 
 const customProxyRules = [
+  {
+    // redirect root requests to the NDE home page
+    context: ['/'],
+    target: PROXY_TARGET,
+    agent: proxyAgent,
+    bypass(req, res) {
+      if (req.url === '/' || req.url === '') {
+        res.writeHead(302, {
+          location: `/nde/home?vid=${getVid()}`,
+        });
+        res.end();
+        return true;
+      }
+    },
+  },
   {
     // redirect external login requests
     context: ['/primaws/suprimaExtLogin'],
