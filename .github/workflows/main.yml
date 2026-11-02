@@ -1,22 +1,21 @@
-name: Deploy Addons
+name: Main Branch Pipeline
 
 on:
-  workflow_run:
-    workflows: ['CI']
-    types:
-      - completed
+  push:
     branches:
       - main
   workflow_dispatch:
 
 concurrency:
-  group: deploy-addons-${{ github.ref }}
+  group: main-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    # Only run on main if the CI run was completely successful
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') }}
+  ci:
+    uses: ./.github/workflows/_ci.yml
+
+  deploy-addons:
+    needs: ci
     runs-on: ubuntu-latest
 
     permissions:
@@ -32,10 +31,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Download node_modules artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node-modules-${{ github.sha }}
+          path: node_modules
 
       - name: Restore Nx Local Cache
         uses: actions/cache@v4

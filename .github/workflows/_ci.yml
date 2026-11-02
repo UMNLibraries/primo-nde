@@ -1,13 +1,10 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
   workflow_call:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -33,6 +30,13 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Upload node_modules artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-modules-${{ github.sha }}
+          path: node_modules
+          retention-days: 1
 
       - name: Restore/Save Nx Local Cache
         uses: actions/cache@v4
@@ -62,7 +66,7 @@ jobs:
         run: npx nx affected -t build
 
       - name: Create Affected View Packages
-        run: npx nx affected --t package --configuration=production
+        run: npx nx affected -t package --configuration=production
 
       - name: Upload view packages
         if: ${{ !env.ACT }}
