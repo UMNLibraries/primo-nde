@@ -1,13 +1,10 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
   workflow_call:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -62,7 +59,7 @@ jobs:
         run: npx nx affected -t build
 
       - name: Create Affected View Packages
-        run: npx nx affected --t package --configuration=production
+        run: npx nx affected -t package --configuration=production
 
       - name: Upload view packages
         if: ${{ !env.ACT }}

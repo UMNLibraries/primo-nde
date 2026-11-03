@@ -1,22 +1,21 @@
-name: Deploy Addons
+name: Main Branch Pipeline
 
 on:
-  workflow_run:
-    workflows: ['CI']
-    types:
-      - completed
+  push:
     branches:
       - main
   workflow_dispatch:
 
 concurrency:
-  group: deploy-addons-${{ github.ref }}
+  group: main-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    # Only run on main if the CI run was completely successful
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') }}
+  ci:
+    uses: ./.github/workflows/_ci.yml
+
+  deploy-addons:
+    needs: ci
     runs-on: ubuntu-latest
 
     permissions:
