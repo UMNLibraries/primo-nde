@@ -46,7 +46,7 @@ const vendorRulesWithoutOverrides = vendorProxyRules.filter(
 const customProxyRules = [
   {
     // redirect root requests to the NDE home page
-    context: ['/'],
+    context: ['^/$'],
     target: PROXY_TARGET,
     agent: proxyAgent,
     bypass(req, res) {
