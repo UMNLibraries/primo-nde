@@ -30,12 +30,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: 'npm'
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: node-modules-${{ github.sha }}
-          path: node_modules
+      - name: Install dependencies
+        run: npm ci
 
       - name: Restore Nx Local Cache
         uses: actions/cache@v4
